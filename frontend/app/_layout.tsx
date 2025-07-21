@@ -1,5 +1,6 @@
-import { Stack } from "expo-router";
+// app/layout.tsx
+import { Slot } from "expo-router";
 
 export default function RootLayout() {
-  return <Stack />;
+  return <Slot />;
 }
