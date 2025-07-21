@@ -1,0 +1,48 @@
+# ✅ Node modules (do not upload dependencies)
+node_modules/
+
+# ✅ Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ✅ OS-specific files
+.DS_Store
+Thumbs.db
+
+# ✅ Environment variables and sensitive config
+.env
+.env.*
+
+# ✅ Optional: IDE/editor settings
+.vscode/
+.idea/
+*.swp
+
+# ✅ Docker-related
+**/volumes/
+docker-compose.override.yml
+
+# ✅ Exclude build artifacts (if any in future)
+dist/
+build/
+
+# ✅ Allow important SQL files (do NOT ignore)
+# ❌ Avoid ignoring .sql globally to keep these:
+# - database-schema.sql
+# - db-seed.sql
+
+# ✅ Optional: Ignore personal backup/dump SQL files
+*.dump.sql
+*.backup.sql
+*.old.sql
+
+# ✅ Ignore temporary files
+*.tmp   
+
+*.temp
+# ✅ Ignore coverage reports
+coverage/
+
+

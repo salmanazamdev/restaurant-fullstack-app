@@ -1,0 +1,51 @@
+# Node.js dependencies
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+.env
+
+# Logs
+logs/
+*.log
+log.txt
+
+# macOS system files
+.DS_Store
+
+# VS Code settings
+.vscode/
+
+# Expo / React Native specific
+.expo/
+.expo-shared/
+*.expo
+
+# React Native build files
+android/
+ios/
+*.apk
+*.keystore
+
+# Metro bundler cache
+metro-cache/
+*.tmp
+*.swp
+
+# Build output
+build/
+dist/
+
+# Docker-related (optional overrides, but NOT the core yml file)
+docker-compose.override.yml
+
+# Optional SQLite/DB backups (only if you use them locally)
+*.sqlite
+*.sqlite3
+
+# OS files
+Thumbs.db
+
+# Misc
+*.zip
+*.tgz

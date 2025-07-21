@@ -1,0 +1,18 @@
+services:
+  restaurant-api-db:
+    container_name: restaurant-api-container
+    image: postgres:14.2
+    restart: always
+    environment:
+      POSTGRES_DB: "restaurant_db"
+      POSTGRES_USER: "root"
+      POSTGRES_PASSWORD: "root"
+    ports:
+      - "5432:5432"
+    expose:
+      - "5432"
+    volumes:
+      - vol-restaurant-api-db:/var/lib/postgresql/data
+
+volumes:
+  vol-restaurant-api-db:
