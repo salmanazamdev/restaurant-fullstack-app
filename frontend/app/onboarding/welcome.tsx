@@ -5,17 +5,17 @@ import { router } from "expo-router";
 export default function OnboardingWelcome() {
   return (
     <ImageBackground
-      source={require("../../assets/images/welcomebg.jpg")} // Make sure you place your background image here
+      source={require("../../assets/images/welcomebg.jpg")} 
       style={styles.background}
       resizeMode="cover"
     >
       <View style={styles.overlay}>
         <View style={styles.textContainer}>
-          <Text style={styles.title}>Welcome to Khaana Express</Text>
+          <Text style={styles.title}>Welcome to Khaana Express 👋</Text>
           <Text style={styles.subtitle}>Khaana pohnchey full speed sey 🚀</Text>
           <Button title="Get Started" onPress={() => router.push("/onboarding/walk1")} />
         </View>
-      </View>
+      </View> 
     </ImageBackground>
   );
 }
@@ -41,6 +41,8 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "#fff",
     marginBottom: 10,
+    paddingHorizontal: 20,
+    textAlign: "center",
   },
   subtitle: {
     fontSize: 16,

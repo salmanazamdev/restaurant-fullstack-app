@@ -1,21 +1,32 @@
-// app/index.tsx
+import { View, Text, Dimensions } from "react-native";
 import { useEffect } from "react";
-import { View, Text, ActivityIndicator } from "react-native";
 import { router } from "expo-router";
+import LottieView from "lottie-react-native";
 
-export default function Index() {
+const { height } = Dimensions.get("window");
+
+export default function SplashScreen() {
   useEffect(() => {
-    const timer = setTimeout(() => {
+    setTimeout(() => {
       router.replace("/onboarding/welcome");
-    }, 2000); // Simulates splash screen
-
-    return () => clearTimeout(timer);
+    }, 2500);
   }, []);
 
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center"}}>
-      <Text style={{ fontSize: 34, fontWeight: "bold" }}>Khaana Express 🍽️</Text>
-      <ActivityIndicator size="large" />
+    <View style={{ flex: 1, backgroundColor: "#ffffff", justifyContent: "center", alignItems: "center" }}>
+      <Text style={{ fontSize: 28, fontWeight: "600", color: "#000000" }}>🍽️ Khaana Express</Text>
+
+      <LottieView
+        source={require("@/assets/lottie/loader.json")}
+        autoPlay
+        loop
+        style={{
+          position: "absolute",
+          bottom: height * 0.09,
+          width: 90,
+          height: 90,
+        }}
+      />
     </View>
   );
 }
