@@ -13,8 +13,8 @@ export default function Index() {
   }, []);
 
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text style={{ fontSize: 24, fontWeight: "bold" }}>Foodu 🍽️</Text>
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center"}}>
+      <Text style={{ fontSize: 34, fontWeight: "bold" }}>🍽️ Foodu</Text>
       <ActivityIndicator size="large" />
     </View>
   );
