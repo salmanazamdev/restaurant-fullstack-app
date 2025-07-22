@@ -4,11 +4,10 @@ import { router } from "expo-router";
 export default function Walk1() {
   return (
     <View style={styles.container}>
-      {/* Background SVG or PNG can be added here if needed in the future */}
       
       {/* Top Image */}
       <Image
-        source={require("@/assets/images/order.png")} // change to your PNG file
+        source={require("@/assets/images/plate.png")}
         style={styles.image}
         resizeMode="contain"
       />
@@ -34,7 +33,7 @@ const green = "#3DBE29";
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff", // match the background
+    backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "space-between",
     paddingVertical: 60,
