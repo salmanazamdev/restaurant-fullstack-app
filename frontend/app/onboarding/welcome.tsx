@@ -6,7 +6,7 @@ export default function WelcomeScreen() {
     <ImageBackground source={require("@/assets/images/welcomebg.jpg")} style={styles.bg}>
       <View style={styles.overlay}>
         <Text style={styles.title}>Welcome to Khaana Express 👋</Text>
-        <Text style={styles.subtitle}>Delicious food delivered fast 🍕</Text>
+        <Text style={styles.subtitle}>Khana Pohnchey Teez Raftaar 🍕</Text>
         <Button title="Next" onPress={() => router.push("/onboarding/walk1")} />
       </View>
     </ImageBackground>
