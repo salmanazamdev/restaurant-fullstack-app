@@ -1,140 +1,50 @@
-# 🍛 Khaana Express – Full-Stack Restaurant App (Node.js + PostgreSQL + Docker + React Native)
+# Welcome to your Expo app 👋
 
-**Khaana Express** is a full-stack food ordering and restaurant management platform. It features a secure and scalable backend built with Node.js, PostgreSQL, and Docker, and a beautifully designed mobile frontend using React Native (Expo).
+This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
----
+## Get started
 
-## 🚀 Tech Stack
+1. Install dependencies
 
-- **Backend**: Node.js, Express.js  
-- **Database**: PostgreSQL (Dockerized)  
-- **Frontend**: React Native with Expo Router  
-- **Others**: Docker Compose, Bcrypt for password hashing
+   ```bash
+   npm install
+   ```
 
----
+2. Start the app
 
-## ✨ Features
+   ```bash
+   npx expo start
+   ```
 
-### 🔐 Admin (Backend)
-- Add, update, and delete menu items
-- Manage restaurants, users, and order statuses
-- Secure login with hashed passwords
-- Dockerized backend for local and cloud deployment
+In the output, you'll find options to open the app in a
 
-### 🍽️ Customers (Mobile App)
-- Browse restaurants and food items
-- Create account / Login securely
-- Place food orders through a mobile-friendly UI
-- Track order status (Pending → Confirmed → Served)
+- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
+- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
+- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
+- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
 
----
+You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
 
-## 🛠️ Backend Setup
+## Get a fresh project
 
-1. Clone the repo:
+When you're ready, run:
 
 ```bash
-git clone https://github.com/salmanazamdev/restaurant-fullstack-app.git
-cd restaurant-fullstack-app/backend
-````
-
-2. Start Docker services:
-
-```bash
-docker compose up -d
+npm run reset-project
 ```
 
-3. Create and seed the database:
+This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
 
-```bash
-docker exec -i restaurant-api-container psql -U root -d postgres -c "CREATE DATABASE restaurant_db;"
-docker exec -i restaurant-api-container psql -U root -d restaurant_db < database-schema.sql
-docker exec -i restaurant-api-container psql -U root -d restaurant_db < db-seed.sql
-```
+## Learn more
 
-4. Install dependencies and run the server:
+To learn more about developing your project with Expo, look at the following resources:
 
-```bash
-npm install
-nodemon index.js
-```
+- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
+- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
 
----
+## Join the community
 
-## 📱 Frontend (React Native + Expo)
+Join our community of developers creating universal apps.
 
-1. Navigate to frontend folder:
-
-```bash
-cd ../frontend
-```
-
-2. Install dependencies and start the app:
-
-```bash
-npm install
-npx expo start
-```
-
-3. Scan the QR code using the **Expo Go app** to run it on your phone.
-
----
-
-## 🗂️ Project Structure
-
-```
-khaana-express/
-├── backend/
-│   ├── functions/
-│   ├── database/
-│   ├── index.js
-│   ├── database-schema.sql
-│   ├── db-seed.sql
-│   └── docker-compose.yml
-├── frontend/
-│   ├── app / onboarding/
-│   ├── app / orders/
-│   ├── app / restaurants/
-│   ├── app / users/
-│   ├── app / auth/
-│   ├── app / navigation/
-│   ├── screens/
-│   ├── components/
-│   └── assets/
-└── README.md
-```
-
----
-
-## 🔐 Status Codes
-
-| Code | Description           |
-| ---- | --------------------- |
-| 200  | OK                    |
-| 201  | Created               |
-| 400  | Bad Request           |
-| 401  | Unauthorized          |
-| 403  | Forbidden             |
-| 404  | Not Found             |
-| 500  | Internal Server Error |
-
----
-
-## 🧠 Future Enhancements
-
-* 🔔 Push notifications for order updates
-* 💳 Payment integration
-* 📊 Admin analytics dashboard
-* 🧾 Order history and reordering features
-
----
-
-## 👨‍💻 Author
-
-**Muhammad Salman Azam**
-[GitHub](https://github.com/salmanazamdev) • [LinkedIn](https://www.linkedin.com/in/salmanazamdev)
-
----
-
-> 🥘 Khaana Express – Your meal, one tap away.
-````
+- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
+- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.

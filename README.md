@@ -1,47 +1,50 @@
-# 🍽️ Full-Stack Restaurant App (Node.js + PostgreSQL + Docker + React Native)
+# 🍛 Khaana Express – Full-Stack Restaurant App (Node.js + PostgreSQL + Docker + React Native)
 
-This is a complete full-stack restaurant service platform. It features a powerful RESTful backend API for restaurant management and a mobile frontend built with React Native (Expo) that provides an intuitive customer experience.
-
-## 🔧 Tech Stack
-
-- **Backend:** Node.js, Express
-- **Database:** PostgreSQL (via Docker)
-- **Frontend (Mobile):** React Native (Expo)
-- **Others:** Bcrypt (for password hashing), Docker Compose
+**Khaana Express** is a full-stack food ordering and restaurant management platform. It features a secure and scalable backend built with Node.js, PostgreSQL, and Docker, and a beautifully designed mobile frontend using React Native (Expo).
 
 ---
 
-## 🧠 What It Does
+## 🚀 Tech Stack
 
-### ✅ Admin Features
-- Add, edit, and remove menu items
-- Manage restaurants, users, and orders
-- Secure login and authentication (hashed passwords)
-- Backend fully containerized using Docker
+- **Backend**: Node.js, Express.js  
+- **Database**: PostgreSQL (Dockerized)  
+- **Frontend**: React Native with Expo Router  
+- **Others**: Docker Compose, Bcrypt for password hashing
 
-### 🍽️ Customer Features
-- Browse available restaurants and menus
-- Place orders through a mobile-friendly UI
-- Track order status (pending/confirmed/served)
-- Account creation and secure login (React Native app)
+---
+
+## ✨ Features
+
+### 🔐 Admin (Backend)
+- Add, update, and delete menu items
+- Manage restaurants, users, and order statuses
+- Secure login with hashed passwords
+- Dockerized backend for local and cloud deployment
+
+### 🍽️ Customers (Mobile App)
+- Browse restaurants and food items
+- Create account / Login securely
+- Place food orders through a mobile-friendly UI
+- Track order status (Pending → Confirmed → Served)
 
 ---
 
 ## 🛠️ Backend Setup
 
-1. **Clone the repo:**
+1. Clone the repo:
+
 ```bash
 git clone https://github.com/salmanazamdev/restaurant-fullstack-app.git
 cd restaurant-fullstack-app/backend
 ````
 
-2. **Start Docker services:**
+2. Start Docker services:
 
 ```bash
 docker compose up -d
 ```
 
-3. **Create and seed the database:**
+3. Create and seed the database:
 
 ```bash
 docker exec -i restaurant-api-container psql -U root -d postgres -c "CREATE DATABASE restaurant_db;"
@@ -49,7 +52,7 @@ docker exec -i restaurant-api-container psql -U root -d restaurant_db < database
 docker exec -i restaurant-api-container psql -U root -d restaurant_db < db-seed.sql
 ```
 
-4. **Install dependencies and run the backend:**
+4. Install dependencies and run the server:
 
 ```bash
 npm install
@@ -58,29 +61,29 @@ nodemon index.js
 
 ---
 
-## 📱 Frontend (React Native with Expo)
+## 📱 Frontend (React Native + Expo)
 
-1. **Navigate to frontend folder:**
+1. Navigate to frontend folder:
 
 ```bash
 cd ../frontend
 ```
 
-2. **Install dependencies and run app:**
+2. Install dependencies and start the app:
 
 ```bash
 npm install
 npx expo start
 ```
 
-> 💡 You can scan the QR code on Expo Go (Android/iOS) to test the mobile app.
+3. Scan the QR code using the **Expo Go app** to run it on your phone.
 
 ---
 
 ## 🗂️ Project Structure
 
 ```
-restaurant-fullstack-app/
+khaana-express/
 ├── backend/
 │   ├── functions/
 │   ├── database/
@@ -89,7 +92,12 @@ restaurant-fullstack-app/
 │   ├── db-seed.sql
 │   └── docker-compose.yml
 ├── frontend/
-│   ├── App.js
+│   ├── app / onboarding/
+│   ├── app / orders/
+│   ├── app / restaurants/
+│   ├── app / users/
+│   ├── app / auth/
+│   ├── app / navigation/
 │   ├── screens/
 │   ├── components/
 │   └── assets/
@@ -100,27 +108,33 @@ restaurant-fullstack-app/
 
 ## 🔐 Status Codes
 
-* `200` – OK
-* `201` – Created
-* `400` – Bad Request
-* `401` – Unauthorized
-* `403` – Forbidden
-* `404` – Not Found
-* `500` – Internal Server Error
+| Code | Description           |
+| ---- | --------------------- |
+| 200  | OK                    |
+| 201  | Created               |
+| 400  | Bad Request           |
+| 401  | Unauthorized          |
+| 403  | Forbidden             |
+| 404  | Not Found             |
+| 500  | Internal Server Error |
 
 ---
 
-## 📬 Author
+## 🧠 Future Enhancements
+
+* 🔔 Push notifications for order updates
+* 💳 Payment integration
+* 📊 Admin analytics dashboard
+* 🧾 Order history and reordering features
+
+---
+
+## 👨‍💻 Author
 
 **Muhammad Salman Azam**
-[GitHub](https://github.com/salmanazamdev) | [LinkedIn](https://linkedin.com/in/salmanazamdev)
+[GitHub](https://github.com/salmanazamdev) • [LinkedIn](https://www.linkedin.com/in/salmanazamdev)
 
 ---
 
-## 💡 Future Features (Ideas)
-
-* Push notifications for order updates
-* Payment integration
-* Order analytics dashboard for admin
-
----
+> 🥘 Khaana Express – Your meal, one tap away.
+````
