@@ -48,22 +48,20 @@ const styles = StyleSheet.create({
     paddingHorizontal: 30,
     paddingTop: 60,
   },
-    icon: {
-        width: 20,
-        height: 20,
-        marginRight: 10,
-    },
+
     image: {
         width: 200,
         height: 200,
         marginBottom: 30,
     },
+
   title: {
     fontSize: 28,
     fontWeight: "bold",
     marginBottom: 30,
     color: "#000",
   },
+
   socialBtn: {
     width: "100%",
     backgroundColor: "#f2f2f2",
@@ -72,15 +70,25 @@ const styles = StyleSheet.create({
     marginVertical: 6,
     alignItems: "center",
   },
+
+    icon: {
+        width: 20,
+        height: 20,
+        marginRight: 10,
+    },
+    
   socialText: {
     fontSize: 16,
+    
     color: "#000",
   },
+
   orText: {
     marginVertical: 20,
     fontSize: 14,
     color: "#999",
   },
+
   greenBtn: {
     backgroundColor: green,
     width: "100%",
@@ -88,17 +96,21 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     alignItems: "center",
   },
+
   greenBtnText: {
     color: "#fff",
     fontWeight: "bold",
   },
+
   footerText: {
     marginTop: 20,
     fontSize: 14,
     color: "#333",
   },
+
   link: {
     color: green,
     fontWeight: "bold",
   },
+
 });
