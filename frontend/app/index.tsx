@@ -14,7 +14,7 @@ export default function Index() {
 
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center"}}>
-      <Text style={{ fontSize: 34, fontWeight: "bold" }}>🍽️ Foodu</Text>
+      <Text style={{ fontSize: 34, fontWeight: "bold" }}>Khaana Express 🍽️</Text>
       <ActivityIndicator size="large" />
     </View>
   );

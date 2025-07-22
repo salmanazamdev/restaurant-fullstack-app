@@ -1,13 +1,45 @@
-// app/onboarding/index.tsx
-import { View, Text, Button } from "react-native";
-import { router } from "expo-router";
+// Example in welcome.tsx
+import { ImageBackground, View, Text, StyleSheet, Button } from 'react-native';
+import { router } from 'expo-router';
 
-export default function OnboardingWelcome() {
+export default function WelcomeScreen() {
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text style={{ fontSize: 28, fontWeight: "bold", marginBottom: 20 }}>Welcome to Khaana Express</Text>
-      <Text style={{ fontSize: 16, marginBottom: 40 }}>Khaana pohnchey full speed sey 🚀</Text>
-      <Button title="Get Started" onPress={() => router.push("/onboarding/walk1")} />
-    </View>
+    <ImageBackground
+      source={require('../../assets/images/welcomebg.jpg')}
+      resizeMode="cover"
+      style={styles.background}
+    >
+      <View style={styles.overlay}>
+        <Text style={styles.title}>Welcome to `Khaana Express`</Text>
+        <Text style={styles.subtitle}>Delicious food, delivered fast</Text>
+        <Button title="Get Started" onPress={() => router.push('/onboarding/walk1')} />
+      </View>
+    </ImageBackground>
   );
 }
+
+const styles = StyleSheet.create({
+  background: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  overlay: {
+    backgroundColor: 'rgba(255, 255, 255, 0.98)', // Optional: dark overlay
+    padding: 20,
+    borderRadius: 10,
+  },
+  title: {
+    color: '#333',
+    fontSize: 28,
+    fontWeight: 'bold',
+    marginBottom: 10,
+    textAlign: 'center',
+  },
+  subtitle: {
+    color: '#eee',
+    fontSize: 16,
+    marginBottom: 20,
+    textAlign: 'center',
+  },
+});
