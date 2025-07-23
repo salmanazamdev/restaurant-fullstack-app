@@ -38,7 +38,7 @@ export default function Login() {
   );
 }
 
-const green = "#1a974e";
+const customGreen = "#1a974e"; // Custom green color as per the design context
 
 const styles = StyleSheet.create({
   container: {
@@ -79,7 +79,6 @@ const styles = StyleSheet.create({
     
   socialText: {
     fontSize: 16,
-    
     color: "#000",
   },
 
@@ -90,7 +89,7 @@ const styles = StyleSheet.create({
   },
 
   greenBtn: {
-    backgroundColor: green,
+    backgroundColor: customGreen,
     width: "100%",
     padding: 14,
     borderRadius: 12,
@@ -109,7 +108,7 @@ const styles = StyleSheet.create({
   },
 
   link: {
-    color: green,
+    color: customGreen,
     fontWeight: "bold",
   },
 
