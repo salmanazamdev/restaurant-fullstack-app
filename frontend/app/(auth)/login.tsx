@@ -38,7 +38,7 @@ export default function Login() {
   );
 }
 
-const customGreen = "#1a974e"; // Custom green color as per the design context
+const customGreen = "#1a974e"; 
 
 const styles = StyleSheet.create({
   container: {

@@ -12,37 +12,9 @@ export default function Signup() {
       <Text style={styles.title}>Create New Account</Text>
 
 
-  {/* Phone Input */}
-      <View style={styles.inputContainer}>
-        <Image source={require("@/assets/images/apple.png")} style={styles.icon} />
-        <TextInput
-          placeholder="Phone Number"
-          style={styles.input}
-          placeholderTextColor="#aaa"
-          keyboardType="phone-pad"
-        />
-      </View>
-
-      {/* Email Input */}
-      <View style={styles.inputContainer}>
-        <Image source={require("@/assets/images/apple.png")} style={styles.icon} />
-        <TextInput
-          placeholder="Email"
-          style={styles.input}
-          placeholderTextColor="#aaa"
-          keyboardType="email-address"
-        />
-      </View>
-
-      {/* Full Name Input */}
-      <View style={styles.inputContainer}>
-        <Image source={require("@/assets/images/apple.png")} style={styles.icon} />
-        <TextInput
-          placeholder="Full Name"
-          style={styles.input}
-          placeholderTextColor="#aaa"
-        />
-      </View>
+      <TextInput placeholder="Phone Number" style={styles.input} placeholderTextColor="#aaa" keyboardType="phone-pad" />
+      <TextInput placeholder="Email" style={styles.input} placeholderTextColor="#aaa" keyboardType="email-address" />
+      <TextInput placeholder="Full Name" style={styles.input} placeholderTextColor="#aaa" />
 
 
       <TouchableOpacity style={styles.greenBtn}>
@@ -75,7 +47,6 @@ const styles = StyleSheet.create({
         alignSelf: "center",
         marginBottom: 5,
     },
-
   title: {
     fontSize: 28,
     fontWeight: "bold",
@@ -83,21 +54,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: "#000",
   },
-
-    inputContainer: {
-    width: "100%",
-    backgroundColor: "#f2f2f2",
-    padding: 14,
-    borderRadius: 12,
-    marginVertical: 6,
-    alignItems: "center",
-  },
-     icon: {
-        width: 20,
-        height: 20,
-        marginRight: 10,
-    },
-
+  
   input: {
     backgroundColor: "#f2f2f2",
     padding: 14,
@@ -105,7 +62,7 @@ const styles = StyleSheet.create({
     marginVertical: 8,
     color: "#000",
   },
-  
+
   greenBtn: {
     backgroundColor: customGreen,
     padding: 14,
@@ -113,17 +70,20 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 20,
   },
+
   greenBtnText: {
     color: "#fff",
     fontWeight: "bold",
     fontSize: 16,
   },
+
   footerText: {
     marginTop: 25,
     fontSize: 14,
     color: "#333",
     textAlign: "center",
   },
+  
   link: {
     color: customGreen,
     fontWeight: "bold",
