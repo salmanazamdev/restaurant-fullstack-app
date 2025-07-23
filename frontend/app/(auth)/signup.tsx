@@ -12,10 +12,10 @@ export default function Signup() {
       <Text style={styles.title}>Create New Account</Text>
 
 
-      <TextInput placeholder="Phone Number" style={styles.input} placeholderTextColor="#aaa" keyboardType="phone-pad" />
+      <TextInput placeholder="Username" style={styles.input} placeholderTextColor="#aaa" />
       <TextInput placeholder="Email" style={styles.input} placeholderTextColor="#aaa" keyboardType="email-address" />
       <TextInput placeholder="Full Name" style={styles.input} placeholderTextColor="#aaa" />
-
+ 
 
       <TouchableOpacity style={styles.greenBtn}>
         <Text style={styles.greenBtnText}>Sign Up</Text>
@@ -32,7 +32,7 @@ export default function Signup() {
   );
 }
 
-const customGreen = "#1a974e"; // Custom green color as per the design context
+const customGreen = "#1a974e";
 
 const styles = StyleSheet.create({
   container: {
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
     color: "#333",
     textAlign: "center",
   },
-  
+
   link: {
     color: customGreen,
     fontWeight: "bold",
