@@ -8,7 +8,7 @@ export default function Login() {
       <Image source={require("@/assets/images/welcome.png")} style={styles.image} />
 
       {/* Heading */}
-      <Text style={styles.title}>Let’s you in</Text>
+      <Text style={styles.title}>Let's you in</Text>
 
       {/* Social Buttons */}
       <TouchableOpacity style={styles.socialBtn}>

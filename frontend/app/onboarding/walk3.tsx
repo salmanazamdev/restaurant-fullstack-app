@@ -28,7 +28,7 @@ export default function Walk3() {
   );
 }
 
-const green = "#3DBE29";
+const customGreen = "#1a974eff"; // I picked a color relevant to the theme given the context and declared it as a constant
 
 const styles = StyleSheet.create({
   container: {
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 38,
     fontWeight: "bold",
-    color:"#1a974eff",
+    color: customGreen,
     marginBottom: 20,
   },
   description: {
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   button: {
-    backgroundColor: "#1a974eff",
+    backgroundColor: customGreen,
     width: "70%",
     paddingVertical: 12,
     paddingHorizontal: 40,
