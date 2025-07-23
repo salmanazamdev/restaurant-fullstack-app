@@ -14,12 +14,25 @@ export default function Signup() {
 
       <TextInput placeholder="Username" style={styles.input} placeholderTextColor="#aaa" />
       <TextInput placeholder="Email" style={styles.input} placeholderTextColor="#aaa" keyboardType="email-address" />
-      <TextInput placeholder="Full Name" style={styles.input} placeholderTextColor="#aaa" />
+      <TextInput placeholder="Password" style={styles.input} placeholderTextColor="#aaa" keyboardType="visible-password" />
  
 
       <TouchableOpacity style={styles.greenBtn}>
         <Text style={styles.greenBtnText}>Sign Up</Text>
       </TouchableOpacity>
+
+
+<View style={styles.socialBtn}>
+      <TouchableOpacity>
+        <Image source={require("@/assets/images/google.png")} style={styles.icon} ></Image>
+      </TouchableOpacity>
+      <TouchableOpacity>
+        <Image source={require("@/assets/images/google.png")} style={styles.icon} ></Image>
+      </TouchableOpacity>
+      <TouchableOpacity>
+        <Image source={require("@/assets/images/google.png")} style={styles.icon} ></Image>
+      </TouchableOpacity>
+</View>
 
 
       <Text style={styles.footerText}>
@@ -32,7 +45,9 @@ export default function Signup() {
   );
 }
 
+
 const customGreen = "#1a974e";
+
 
 const styles = StyleSheet.create({
   container: {
@@ -76,6 +91,25 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 16,
   },
+
+    socialBtn: {
+    width: "100%",
+    padding: 14,
+    borderRadius: 12,
+    marginVertical: 6,
+    marginTop:20,
+    flexDirection:"row",
+  },
+
+    icon: {
+        backgroundColor: "#f2f2f2",
+        paddingHorizontal:9,
+        width: 20,
+        height: 20,
+        marginHorizontal:35
+        
+
+    },
 
   footerText: {
     marginTop: 25,
