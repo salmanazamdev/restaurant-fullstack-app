@@ -24,13 +24,13 @@ export default function Signup() {
 
 <View style={styles.socialBtn}>
       <TouchableOpacity>
-        <Image source={require("@/assets/images/google.png")} style={styles.icon} ></Image>
+        <Image source={require("@/assets/images/facebook.png")} style={styles.icon} ></Image>
       </TouchableOpacity>
       <TouchableOpacity>
         <Image source={require("@/assets/images/google.png")} style={styles.icon} ></Image>
       </TouchableOpacity>
       <TouchableOpacity>
-        <Image source={require("@/assets/images/google.png")} style={styles.icon} ></Image>
+        <Image source={require("@/assets/images/apple.png")} style={styles.icon} ></Image>
       </TouchableOpacity>
 </View>
 
@@ -94,19 +94,19 @@ const styles = StyleSheet.create({
 
     socialBtn: {
     width: "100%",
-    padding: 14,
-    borderRadius: 12,
     marginVertical: 6,
-    marginTop:20,
+    marginTop:30,
     flexDirection:"row",
+
   },
 
     icon: {
         backgroundColor: "#f2f2f2",
-        paddingHorizontal:9,
-        width: 20,
-        height: 20,
-        marginHorizontal:35
+        width: 30,
+        height: 30,
+        marginHorizontal:39,
+        
+        
         
 
     },
