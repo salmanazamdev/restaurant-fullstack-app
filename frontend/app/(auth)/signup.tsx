@@ -94,25 +94,23 @@ const styles = StyleSheet.create({
 
     socialBtn: {
     width: "100%",
-    marginVertical: 6,
-    marginTop:30,
+    alignItems:"center",
+    justifyContent:"center",
     flexDirection:"row",
+    marginVertical:40
 
   },
 
     icon: {
-        backgroundColor: "#f2f2f2",
         width: 30,
-        height: 30,
-        marginHorizontal:39,
-        
-        
+        height: 30, 
+        marginHorizontal: 30
         
 
     },
 
   footerText: {
-    marginTop: 25,
+    marginTop: 15,
     fontSize: 14,
     color: "#333",
     textAlign: "center",
