@@ -1,15 +1,4 @@
-import {
-  View,
-  Text,
-  StyleSheet,
-  TextInput,
-  TouchableOpacity,
-  Image,
-  Alert,
-  KeyboardAvoidingView,
-  Platform,
-  ScrollView,
-} from "react-native";
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, Alert, KeyboardAvoidingView, Platform, ScrollView} from "react-native";
 import { router } from "expo-router";
 import axios from "axios";
 import React, { useState } from "react";
@@ -60,6 +49,7 @@ export default function Signup() {
             placeholderTextColor="#aaa"
             value={username}
             onChangeText={setUsername}
+            autoCapitalize="none"
           />
           <TextInput
             placeholder="Email"
@@ -68,6 +58,7 @@ export default function Signup() {
             keyboardType="email-address"
             value={email}
             onChangeText={setEmail}
+            autoCapitalize="none"
           />
           <TextInput
             placeholder="Password"
@@ -76,6 +67,7 @@ export default function Signup() {
             secureTextEntry
             value={password}
             onChangeText={setPassword}
+            autoCapitalize="none"
           />
 
           <TouchableOpacity style={styles.greenBtn} onPress={handleSignup}>
