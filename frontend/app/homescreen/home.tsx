@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
   },
   restaurantInfo: {
     fontSize: 12,
-    color: "#777",
+    color: "green",
     marginTop: 4,
   },
 });
