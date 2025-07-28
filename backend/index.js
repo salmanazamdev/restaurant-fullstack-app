@@ -36,6 +36,9 @@ const {
   getOrdersByRestaurantId,
   updateOrderById
 } = require('./functions/order');
+const getCategories = require('./functions/categories/getCategories');
+const loggin = require('./middleware/loggin');
+const getRestaurentsByCategoryId = require('./functions/restaurents/getRestaurentsByCategoryId');
 
 // Initialize Express App
 const app = express();
@@ -43,34 +46,39 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 
 // Basic Route
-app.get('/', welcome);
+app.get('/', loggin, welcome);
 
 // Authentication Routes
-app.post('/signup', signup);
-app.post('/login', login);
+app.post('/signup', loggin, signup);
+app.post('/login', loggin, login);
 
 // Restaurant CRUD APIs
-app.post('/restaurants', createRestaurant);
-app.get('/restaurants', getRestaurants);
-app.put('/restaurants/:id', updateRestaurant);
-app.delete('/restaurants/:id', deleteRestaurant);
+app.post('/restaurants', loggin, createRestaurant);
+app.get('/restaurants', loggin, getRestaurants);
+app.put('/restaurants/:id', loggin, updateRestaurant);
+app.delete('/restaurants/:id', loggin, deleteRestaurant);
 
 // Menu CRUD APIs
-app.post('/menus', createMenuItem);
-app.get('/menus/:restaurantId', getMenuItemsByRestaurant);
-app.put('/menus/:id', updateMenuItem);
-app.delete('/menus/:id', deleteMenuItem);
+app.post('/menus', loggin, createMenuItem);
+app.get('/menus/:restaurantId', loggin, getMenuItemsByRestaurant);
+app.put('/menus/:id', loggin, updateMenuItem);
+app.delete('/menus/:id', loggin, deleteMenuItem);
 
 // Customer CRUD APIs // crud means create, read, update, delete
-app.post('/customers', createCustomer);
-app.get('/customers/:restaurantId', getCustomersByRestaurant);
-app.put('/customers/:id', updateCustomer);
-app.delete('/customers/:id', deleteCustomer);
+app.post('/customers', loggin, createCustomer);
+app.get('/customers/:restaurantId', loggin, getCustomersByRestaurant);
+app.put('/customers/:id', loggin, updateCustomer);
+app.delete('/customers/:id', loggin, deleteCustomer);
 
 // Order APIs
-app.post('/orders', createOrder);
-app.get('/orders/:restaurantId', getOrdersByRestaurantId);
-app.put('/orders/:id', updateOrderById);
+app.post('/orders', loggin, createOrder);
+app.get('/orders/:restaurantId', loggin, getOrdersByRestaurantId);
+app.put('/orders/:id', loggin, updateOrderById);
+
+// Categories
+app.get('/categories', loggin, getCategories);
+app.get('/categories/:categoryId/restaurents', loggin, getRestaurentsByCategoryId);
+
 
 // Start the Server
 app.listen(PORT, () => {

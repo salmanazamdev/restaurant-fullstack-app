@@ -2,6 +2,7 @@ import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, Alert, Keyb
 import { router } from "expo-router";
 import axios from "axios";
 import React, { useState } from "react";
+import { IP_ADDRESS } from "@/constants/endpoint";
 
 export default function Signup() {
   const [username, setUsername] = useState("");
@@ -10,7 +11,7 @@ export default function Signup() {
 
   const handleSignup = async () => {
     try {
-      const response = await axios.post("http://192.168.1.15:3000/signup", {
+      const response = await axios.post(`${IP_ADDRESS}/signup`, {
         username,
         email,
         password,

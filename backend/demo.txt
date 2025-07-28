@@ -28,3 +28,10 @@ npm i bcrypt
 // 401 - unauthenticated
 // 403 - unathorized
 // 404 - not found 
+
+
+
+GET - getCategories
+POST - postCategories
+DELETE - deleteCatogies
+PUT- PATCH - putCategories

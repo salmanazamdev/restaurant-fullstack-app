@@ -1,8 +1,37 @@
-import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity } from "react-native";
+//Index act as the homepage
 
+import { useEffect, useState } from "react";
+import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity } from "react-native";
+import axios from 'axios'
+import { IP_ADDRESS } from "@/constants/endpoint";
+import { useRouter } from "expo-router";
 export default function Home() {
+  const router = useRouter();
+  const [categories, setCategories] = useState([])
+
+  useEffect(()=> {
+    getCategories();
+  }, [] )
+
+  const getCategories = async () => {
+    const response = await axios.get(`${IP_ADDRESS}/categories`)
+    setCategories(response.data)
+  }
+
+
   return (
     <ScrollView style={styles.container}>
+
+      {categories.map((data, index)=> {
+        return (
+          <TouchableOpacity onPress={()=> router.push(`/categories/${data.category_id}`)}>
+            <Text>{data.category_name}</Text>
+          </TouchableOpacity>
+        )
+      })
+
+      }
+
       <View style={styles.header}>
         <Image
           source={require("@/assets/images/khaana.png")}

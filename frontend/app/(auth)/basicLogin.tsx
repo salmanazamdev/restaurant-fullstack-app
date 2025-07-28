@@ -2,10 +2,11 @@ import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image } from "reac
 import { useState } from "react";
 import { router } from "expo-router";
 import axios from "axios";
+import { IP_ADDRESS } from "@/constants/endpoint";
 
 export default function LoginAfterSignup() {
-  const [email, setEmail] = useState("ismail@voultrex.com");
-  const [password, setPassword] = useState("ismail123");
+  const [email, setEmail] = useState("abc@gmail.com");
+  const [password, setPassword] = useState("abc");
 
   const handleLogin = async () => {
     if (!email || !password) {
@@ -16,7 +17,7 @@ export default function LoginAfterSignup() {
     try {
   
 
-      const response = await axios.post("http://192.168.1.15:3000/login", {
+      const response = await axios.post(`${IP_ADDRESS}/login`, {
         email,
         password,
       });
