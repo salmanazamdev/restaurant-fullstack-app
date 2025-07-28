@@ -25,7 +25,7 @@ export default function LoginAfterSignup() {
       if (response.status === 200) {
         alert("Login successful!");
 
-        router.push("/homescreen/home"); 
+        router.push("/(tabs)/home"); 
       } else {
         alert("Login failed. Please try again.");
       }
