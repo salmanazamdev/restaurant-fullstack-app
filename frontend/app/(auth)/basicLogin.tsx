@@ -4,8 +4,8 @@ import { router } from "expo-router";
 import axios from "axios";
 
 export default function LoginAfterSignup() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("ismail@voultrex.com");
+  const [password, setPassword] = useState("ismail123");
 
   const handleLogin = async () => {
     if (!email || !password) {
@@ -25,7 +25,7 @@ export default function LoginAfterSignup() {
       if (response.status === 200) {
         alert("Login successful!");
 
-        router.push("/(tabs)/home"); 
+        router.push("/(tabs)"); 
       } else {
         alert("Login failed. Please try again.");
       }

@@ -9,6 +9,12 @@ CREATE TABLE IF NOT EXISTS users (
     deleted_at TIMESTAMP DEFAULT NULL
 );
 
+CREATE TABLE IF NOT EXISTS categories (
+    category_id SERIAL PRIMARY KEY,
+    category_name VARCHAR(50) NOT NULL,
+    category_description VARCHAR(200) NOT NULL
+);
+
 -- Restaurants table
 CREATE TABLE IF NOT EXISTS restaurants (
     restaurant_id SERIAL PRIMARY KEY,
@@ -17,7 +23,9 @@ CREATE TABLE IF NOT EXISTS restaurants (
     phone VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    category_id INT NOT NULL,
+    FOREIGN KEY (category_id) REFERENCES categories(category_id)
 );
 
 -- Menu Items table (linked to restaurants)
