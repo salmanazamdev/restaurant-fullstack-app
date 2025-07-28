@@ -5,7 +5,7 @@ export default function Home() {
     <ScrollView style={styles.container}>
       <View style={styles.header}>
         <Image
-          source={require("@/assets/images/khaanalogo.png")}
+          source={require("@/assets/images/khaana.png")}
           style={styles.logo}
         />
         <Text style={styles.welcome}>Welcome to Khaana Express</Text>

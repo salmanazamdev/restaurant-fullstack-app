@@ -37,7 +37,7 @@ export default function Signup() {
       >
         <View style={styles.innerContainer}>
           <Image
-            source={require("@/assets/images/khaanalogo.png")}
+            source={require("@/assets/images/khaana.png")}
             style={styles.image}
           />
 

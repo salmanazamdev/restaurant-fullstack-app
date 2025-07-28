@@ -4,7 +4,7 @@
     "slug": "Khaana Express",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/khaanalogo.png",
+    "icon": "./assets/images/khaana.png",
     "scheme": "Khaana Express",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
@@ -13,7 +13,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/khaanalogo.png",
+        "foregroundImage": "./assets/images/khaana.png",
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true
@@ -21,14 +21,14 @@
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "./assets/images/favicon.png"
+      "favicon": "./assets/images/khaana.png"
     },
     "plugins": [
       "expo-router",
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/khaanalogo.png",
+          "image": "./assets/images/khaana.png",
           "imageWidth": 200,
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"

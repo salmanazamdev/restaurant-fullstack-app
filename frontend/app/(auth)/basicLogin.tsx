@@ -37,7 +37,7 @@ export default function LoginAfterSignup() {
 
   return (
     <View style={styles.container}>
-      <Image source={require("@/assets/images/khaanalogo.png")} style={styles.image} />
+      <Image source={require("@/assets/images/khaana.png")} style={styles.image} />
       <Text style={styles.title}>Welcome Back!</Text>
 
       <TextInput
