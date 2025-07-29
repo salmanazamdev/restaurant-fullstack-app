@@ -23,12 +23,12 @@ export default function Home() {
       <View style={styles.topBar}>
         <View style={styles.locationWrapper}>
           <Image
-            source={require("@/assets/images/khaana.png")}
+            source={require("@/assets/images/cook.png")}
             style={styles.avatar}
           />
           <View>
             <Text style={styles.deliveryLabel}>Deliver to</Text>
-            <Text style={styles.locationText}>Times Square</Text>
+            <Text style={styles.locationText}>Blue Area, Islamabad</Text>
           </View>
         </View>
       </View>
@@ -45,7 +45,7 @@ export default function Home() {
       <View style={styles.categoriesSection}>
         <Text style={styles.sectionTitle}>Categories</Text>
         <View style={styles.categoryGrid}>
-          {categories.slice(0, 9).map((item, index) => (
+          {categories.slice(0, 12).map((item, index) => (
             <TouchableOpacity
               key={item.category_id}
               style={styles.categoryItem}
@@ -56,7 +56,7 @@ export default function Home() {
                 style={styles.categoryImage}
               />
               <Text style={styles.categoryLabel}>
-                {item.category_name.length > 8
+                {item.category_name.length > 13
                   ? item.category_name.slice(0, 8) + "..."
                   : item.category_name}
               </Text>
@@ -123,17 +123,16 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   categoryItem: {
-    width: "30%",
+    width: "25%",
     alignItems: "center",
     marginBottom: 20,
   },
   categoryImage: {
-    width: 50,
-    height: 50,
+    width: 40,
+    height: 40,
     resizeMode: "contain",
-    marginBottom: 8,
-    borderRadius:20
-  },
+    marginBottom: 8
+    },
   categoryLabel: {
     fontSize: 12,
     color: "#000",
