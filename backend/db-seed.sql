@@ -86,6 +86,133 @@ INSERT INTO menu_items (restaurant_id, name, description, price) VALUES
 (12, 'Loaded Fries', 'French fries topped with cheese, jalapeños, and sauces.', 4.99),
 (12, 'Curly Fries', 'Spiced curly fries served with ranch dip.', 3.99);
 
+-------------------
+-- Additional Restaurants and Menu Items for Each Category (because only one restaurant per catergory isn't awesome at all,...)
+
+-- Hamburger (category_id = 1)
+INSERT INTO restaurants (restaurant_name, address, phone, email, category_id, image_url) VALUES
+('Grill Master', '102 Burger Lane', '0331-1111112', 'grillmaster@burger.com', 1, 'https://images.pexels.com/photos/1639562/pexels-photo-1639562.jpeg'),
+('Burger Hub', '103 Burger Lane', '0331-1111113', 'hub@burger.com', 1, 'https://images.pexels.com/photos/1639563/pexels-photo-1639563.jpeg');
+INSERT INTO menu_items (restaurant_id, name, description, price) VALUES
+(13, 'Spicy Beef Burger', 'Beef patty with jalapenos and spicy sauce.', 8.99),
+(13, 'Veggie Delight', 'Grilled veggie patty with fresh toppings.', 7.49),
+(14, 'Double Cheese Burger', 'Two beef patties with double cheese.', 9.99),
+(14, 'Chicken Supreme', 'Grilled chicken breast with house sauce.', 8.49);
+
+-- Pizza (category_id = 2)
+INSERT INTO restaurants (restaurant_name, address, phone, email, category_id, image_url) VALUES
+('Pizza Point', '203 Mozzarella St', '0332-2222223', 'point@pizza.com', 2, 'https://images.pexels.com/photos/315755/pexels-photo-315755.jpeg'),
+('Slice House', '204 Mozzarella St', '0332-2222224', 'slice@pizza.com', 2, 'https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg');
+INSERT INTO menu_items (restaurant_id, name, description, price) VALUES
+(15, 'BBQ Chicken Pizza', 'Pizza with BBQ chicken and onions.', 13.99),
+(15, 'Veggie Lovers', 'Loaded with fresh vegetables.', 11.99),
+(16, 'Four Cheese Pizza', 'Mozzarella, cheddar, parmesan, blue cheese.', 14.49),
+(16, 'Spicy Pepperoni', 'Pepperoni with chili flakes.', 12.99);
+
+-- Noodle (category_id = 3)
+INSERT INTO restaurants (restaurant_name, address, phone, email, category_id, image_url) VALUES
+('Noodle Express', '304 Wok Way', '0333-3333334', 'express@noodle.com', 3, 'https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg'),
+('Asian Wok', '305 Wok Way', '0333-3333335', 'asianwok@noodle.com', 3, 'https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg');
+INSERT INTO menu_items (restaurant_id, name, description, price) VALUES
+(17, 'Pad Thai', 'Thai-style stir-fried noodles.', 10.99),
+(17, 'Chicken Lo Mein', 'Egg noodles with chicken and veggies.', 9.99),
+(18, 'Spicy Ramen', 'Ramen noodles in spicy broth.', 11.49),
+(18, 'Vegetable Udon', 'Udon noodles with mixed vegetables.', 8.99);
+
+
+-- Meat (category_id = 4)
+INSERT INTO restaurants (restaurant_name, address, phone, email, category_id, image_url) VALUES
+('Steak House', '405 BBQ Blvd', '0334-4444445', 'steak@meat.com', 4, 'https://images.pexels.com/photos/675951/pexels-photo-675951.jpeg'),
+('BBQ Nation', '406 BBQ Blvd', '0334-4444446', 'bbqnation@meat.com', 4, 'https://images.pexels.com/photos/675951/pexels-photo-675951.jpeg');
+INSERT INTO menu_items (restaurant_id, name, description, price) VALUES
+(19, 'T-Bone Steak', 'Grilled T-bone steak with sides.', 18.99),
+(19, 'Lamb Chops', 'Chargrilled lamb chops.', 16.99),
+(20, 'BBQ Platter', 'Assorted BBQ meats.', 20.99),
+(20, 'Chicken Seekh Kebab', 'Spiced minced chicken skewers.', 9.99);
+
+-- Vegetable (category_id = 5)
+INSERT INTO restaurants (restaurant_name, address, phone, email, category_id, image_url) VALUES
+('Veggie Delight', '506 Veggie Ave', '0335-5555556', 'delight@veggie.com', 5, 'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg'),
+('Green Eats', '507 Veggie Ave', '0335-5555557', 'greeneats@veggie.com', 5, 'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg');
+INSERT INTO menu_items (restaurant_id, name, description, price) VALUES
+(21, 'Stuffed Bell Peppers', 'Bell peppers stuffed with rice and veggies.', 7.99),
+(21, 'Spinach Lasagna', 'Lasagna with spinach and ricotta.', 8.99),
+(22, 'Veggie Stir Fry', 'Mixed vegetables stir-fried in soy sauce.', 7.49),
+(22, 'Mushroom Risotto', 'Creamy risotto with mushrooms.', 9.49);
+
+-- Dessert (category_id = 6)
+INSERT INTO restaurants (restaurant_name, address, phone, email, category_id, image_url) VALUES
+('Cake Corner', '607 Sugar St', '0336-6666667', 'cake@dessert.com', 6, 'https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg'),
+('Ice Cream World', '608 Sugar St', '0336-6666668', 'icecream@dessert.com', 6, 'https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg');
+INSERT INTO menu_items (restaurant_id, name, description, price) VALUES
+(23, 'Red Velvet Cake', 'Classic red velvet with cream cheese.', 6.99),
+(23, 'Chocolate Mousse', 'Rich chocolate mousse dessert.', 5.99),
+(24, 'Vanilla Ice Cream', 'Homemade vanilla ice cream.', 4.99),
+(24, 'Mango Sorbet', 'Refreshing mango sorbet.', 5.49);
+
+-- Drink (category_id = 7)
+INSERT INTO restaurants (restaurant_name, address, phone, email, category_id, image_url) VALUES
+('Juice Junction', '709 Beverage Rd', '0337-7777778', 'juice@drink.com', 7, 'https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg'),
+('Cafe Mocha', '710 Beverage Rd', '0337-7777779', 'mocha@drink.com', 7, 'https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg');
+INSERT INTO menu_items (restaurant_id, name, description, price) VALUES
+(25, 'Fresh Orange Juice', 'Squeezed orange juice.', 3.99),
+(25, 'Apple Cider', 'Chilled apple cider.', 4.49),
+(26, 'Cappuccino', 'Espresso with steamed milk foam.', 3.99),
+(26, 'Iced Latte', 'Cold coffee with milk.', 4.49);
+
+-- Bread (category_id = 8)
+INSERT INTO restaurants (restaurant_name, address, phone, email, category_id, image_url) VALUES
+('Baker’s Den', '809 Loaf Street', '0338-8888889', 'bakersden@bread.com', 8, 'https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg'),
+('Loaf & Co.', '810 Loaf Street', '0338-8888890', 'loafco@bread.com', 8, 'https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg');
+INSERT INTO menu_items (restaurant_id, name, description, price) VALUES
+(27, 'Sourdough Bread', 'Artisan sourdough loaf.', 3.99),
+(27, 'Cinnamon Rolls', 'Sweet rolls with cinnamon.', 4.99),
+(28, 'Baguette', 'Classic French baguette.', 2.99),
+(28, 'Focaccia', 'Italian flatbread with herbs.', 3.49);
+
+-- Croissant (category_id = 9)
+INSERT INTO restaurants (restaurant_name, address, phone, email, category_id, image_url) VALUES
+('Croissant King', '911 Croissant Blvd', '0339-9999990', 'king@croissant.com', 9, 'https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg'),
+('French Oven', '912 Croissant Blvd', '0339-9999991', 'oven@croissant.com', 9, 'https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg');
+INSERT INTO menu_items (restaurant_id, name, description, price) VALUES
+(29, 'Chocolate Croissant', 'Croissant with chocolate filling.', 3.99),
+(29, 'Ham & Cheese Croissant', 'Savory croissant with ham and cheese.', 4.49),
+(30, 'Raspberry Danish', 'Danish pastry with raspberry jam.', 4.99),
+(30, 'Butter Roll', 'Soft roll with butter.', 2.99);
+
+-- Pancakes (category_id = 10)
+INSERT INTO restaurants (restaurant_name, address, phone, email, category_id, image_url) VALUES
+('Pancake House', '1111 Pancake Plaza', '0340-0000001', 'house@pancake.com', 10, 'https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg'),
+('Waffle & Stack', '1112 Pancake Plaza', '0340-0000002', 'waffle@pancake.com', 10, 'https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg');
+INSERT INTO menu_items (restaurant_id, name, description, price) VALUES
+(31, 'Banana Pancakes', 'Pancakes with banana slices.', 6.99),
+(31, 'Chocolate Chip Pancakes', 'Pancakes with chocolate chips.', 7.49),
+(32, 'Belgian Waffles', 'Crispy waffles with syrup.', 7.99),
+(32, 'Strawberry Waffles', 'Waffles with strawberries and cream.', 8.49);
+
+-- Cheese (category_id = 11)
+INSERT INTO restaurants (restaurant_name, address, phone, email, category_id, image_url) VALUES
+('Cheese House', '112 Cheddar Alley', '0341-1111112', 'house@cheese.com', 11, 'https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg'),
+('Dairy Delights', '113 Cheddar Alley', '0341-1111113', 'dairy@cheese.com', 11, 'https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg');
+INSERT INTO menu_items (restaurant_id, name, description, price) VALUES
+(33, 'Cheddar Melt', 'Melted cheddar cheese sandwich.', 5.99),
+(33, 'Parmesan Bites', 'Baked parmesan cheese snacks.', 4.99),
+(34, 'Blue Cheese Salad', 'Salad with blue cheese dressing.', 6.49),
+(34, 'Cheese Fondue', 'Classic Swiss cheese fondue.', 8.99);
+
+-- FrenchFries (category_id = 12)
+INSERT INTO restaurants (restaurant_name, address, phone, email, category_id, image_url) VALUES
+('Fry King', '1313 Crunchy Rd', '0342-2222223', 'king@fries.com', 12, 'https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg'),
+('Potato Corner', '1314 Crunchy Rd', '0342-2222224', 'corner@fries.com', 12, 'https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg');
+INSERT INTO menu_items (restaurant_id, name, description, price) VALUES
+(35, 'Chili Cheese Fries', 'Fries topped with chili and cheese.', 5.99),
+(35, 'Truffle Fries', 'Fries tossed in truffle oil.', 6.49),
+(36, 'Potato Wedges', 'Seasoned potato wedges.', 4.99),
+(36, 'Sweet Potato Fries', 'Crispy sweet potato fries.', 5.49);
+
+--------------
+
+
 
 
 -- Seed Restaurant Customers
