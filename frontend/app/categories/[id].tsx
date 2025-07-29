@@ -23,7 +23,7 @@ export default function CategoryRestaurants() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Restaurants</Text>
+      <Text style={styles.title}>List of Restaurants</Text>
       <FlatList
         data={restaurants}
         keyExtractor={(item) => item.restaurant_id.toString()}

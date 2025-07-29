@@ -27,6 +27,7 @@ CREATE TABLE IF NOT EXISTS restaurants (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     category_id INT NOT NULL,
+    image_url VARCHAR(550) DEFAULT NULL
     FOREIGN KEY (category_id) REFERENCES categories(category_id)
 );
 
