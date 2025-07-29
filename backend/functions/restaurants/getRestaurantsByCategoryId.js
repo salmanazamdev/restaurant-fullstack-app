@@ -1,6 +1,6 @@
 const pool = require('../../database/database')
 
-const getRestaurentsByCategoryId = async (req,res) => {
+const getRestaurantsByCategoryId = async (req,res) => {
     const {categoryId} = req.params;
     
     
@@ -11,7 +11,7 @@ const getRestaurentsByCategoryId = async (req,res) => {
         );
 
         if (result.rows.length === 0) {
-            return res.status(404).json({ message: 'No restaurents found for this category' });
+            return res.status(404).json({ message: 'No restaurants found for this category' });
         }
 
         res.json(result.rows);
@@ -21,4 +21,4 @@ const getRestaurentsByCategoryId = async (req,res) => {
     }
 }
 
-module.exports = getRestaurentsByCategoryId;
+module.exports = getRestaurantsByCategoryId;

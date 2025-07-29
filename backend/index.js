@@ -1,4 +1,3 @@
-// Import Required Packages
 const express = require('express');
 
 // Import Route Handlers (Functions)
@@ -38,7 +37,7 @@ const {
 } = require('./functions/order');
 const getCategories = require('./functions/categories/getCategories');
 const loggin = require('./middleware/loggin');
-const getRestaurentsByCategoryId = require('./functions/restaurents/getRestaurentsByCategoryId');
+const getRestaurantsByCategoryId = require('./functions/restaurants/getRestaurantsByCategoryId');
 
 // Initialize Express App
 const app = express();
@@ -77,7 +76,7 @@ app.put('/orders/:id', loggin, updateOrderById);
 
 // Categories
 app.get('/categories', loggin, getCategories);
-app.get('/categories/:categoryId/restaurents', loggin, getRestaurentsByCategoryId);
+app.get('/categories/:categoryId/Restaurants', loggin, getRestaurantsByCategoryId);
 
 
 // Start the Server
