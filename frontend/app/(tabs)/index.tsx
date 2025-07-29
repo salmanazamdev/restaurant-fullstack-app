@@ -7,7 +7,7 @@ import { useRouter } from "expo-router";
 export default function Home() {
   const router = useRouter();
   const [categories, setCategories] = useState([]);
-
+  console.log(categories)
   useEffect(() => {
     getCategories();
   }, []);
@@ -52,7 +52,7 @@ export default function Home() {
               onPress={() => router.push(`/categories/${item.category_id}`)}
             >
               <Image
-                source={require("@/assets/images/apple.png")}
+                source={{uri:item.image_url}}
                 style={styles.categoryImage}
               />
               <Text style={styles.categoryLabel}>
@@ -132,6 +132,7 @@ const styles = StyleSheet.create({
     height: 50,
     resizeMode: "contain",
     marginBottom: 8,
+    borderRadius:20
   },
   categoryLabel: {
     fontSize: 12,

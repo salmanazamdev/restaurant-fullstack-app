@@ -1,19 +1,18 @@
 - docker compose up -d
-
-- docker exec -i restaurant-api-container psql -U root -d postgres -c "DROP DATABASE IF EXISTS restaurant_db;"
+docker exec -i restaurant-api-container psql -U root -d postgres -c "DROP DATABASE IF EXISTS restaurant_db;"
 
 // remove everything
 
 - docker compose down --remove-orphans && \
 	docker volume rm -f vol-rhaalh-api-db
 
-- docker exec -i restaurant-api-container psql -U root -d postgres -c "CREATE DATABASE restaurant_db;"
+docker exec -i restaurant-api-container psql -U root -d postgres -c "CREATE DATABASE restaurant_db;"
 
 // schema migration
-- docker exec -i restaurant-api-container psql -U root -d restaurant_db < database-schema.sql
+docker exec -i restaurant-api-container psql -U root -d restaurant_db < database-schema.sql
 
 // seed migration
-- docker exec -i restaurant-api-container psql -U root -d restaurant_db < db-seed.sql
+docker exec -i restaurant-api-container psql -U root -d restaurant_db < db-seed.sql
 
 // auto refreah
 npm install -g nodemon

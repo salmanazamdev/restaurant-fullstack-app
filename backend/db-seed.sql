@@ -5,19 +5,19 @@ VALUES
 ('essa', 'essa.khan@sample.com', 'hashedpassword2');
 
 -- Seed Categories
-INSERT INTO categories (category_name, category_description) VALUES
-('Hamburger', 'Restaurants specializing in burgers and sandwich-style meals.'),
-('Pizza', 'Pizzerias serving a variety of traditional and modern pizzas.'),
-('Noodle', 'Places offering Asian-style noodles and ramen.'),
-('Meat', 'Meat-heavy menus like BBQ, steak, and kebabs.'),
-('Vegetable', 'Vegetarian and plant-based focused cuisine.'),
-('Dessert', 'Dessert shops offering cakes, ice creams, and sweets.'),
-('Drink', 'Juice bars, cafes, and beverage-focused spots.'),
-('Bread', 'Bakeries offering fresh, handmade bread loaves and buns.'),
-('Croissant', 'Specialty patisseries offering croissants and French pastries.'),
-('Pancakes', 'Breakfast spots with pancakes, waffles, and syrup-heavy dishes.'),
-('Cheese', 'Restaurants known for cheese-centric dishes and platters.'),
-('FrenchFries', 'Fries-focused fast food outlets and side dish experts.');
+INSERT INTO categories (category_name, category_description, image_url) VALUES
+('Hamburger', 'Restaurants specializing in burgers and sandwich-style meals.', 'https://as2.ftcdn.net/jpg/03/61/86/91/1000_F_361869194_7JGmIOSj2iUNi0AYoVhVyhKvaN6PkOah.webp'),
+('Pizza', 'Pizzerias serving a variety of traditional and modern pizzas.', 'https://as1.ftcdn.net/v2/jpg/08/00/20/12/1000_F_800201223_iVnV0KXeZymuZ5psJuo44JDDbClRVRzZ.jpg'),
+('Noodle', 'Places offering Asian-style noodles and ramen.', NULL),
+('Meat', 'Meat-heavy menus like BBQ, steak, and kebabs.', NULL),
+('Vegetable', 'Vegetarian and plant-based focused cuisine.', NULL),
+('Dessert', 'Dessert shops offering cakes, ice creams, and sweets.', NULL),
+('Drink', 'Juice bars, cafes, and beverage-focused spots.', NULL),
+('Bread', 'Bakeries offering fresh, handmade bread loaves and buns.', NULL),
+('Croissant', 'Specialty patisseries offering croissants and French pastries.', NULL),
+('Pancakes', 'Breakfast spots with pancakes, waffles, and syrup-heavy dishes.', NULL),
+('Cheese', 'Restaurants known for cheese-centric dishes and platters.', NULL),
+('FrenchFries', 'Fries-focused fast food outlets and side dish experts.', NULL);
 
 
 -- Seed Restaurants

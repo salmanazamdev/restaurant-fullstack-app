@@ -9,10 +9,12 @@ CREATE TABLE IF NOT EXISTS users (
     deleted_at TIMESTAMP DEFAULT NULL
 );
 
+-- Catergories table
 CREATE TABLE IF NOT EXISTS categories (
     category_id SERIAL PRIMARY KEY,
     category_name VARCHAR(50) NOT NULL,
-    category_description VARCHAR(200) NOT NULL
+    category_description VARCHAR(200) NOT NULL,
+    image_url VARCHAR(550) DEFAULT NULL
 );
 
 -- Restaurants table

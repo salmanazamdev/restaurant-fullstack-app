@@ -1,7 +1,13 @@
 import { Tabs } from 'expo-router';
 import React from 'react';
 import { Platform } from 'react-native';
+
+//Below are imports done for tabs' icons
+import Octicons from '@expo/vector-icons/Octicons';
 import Ionicons from '@expo/vector-icons/Ionicons';
+import Feather from '@expo/vector-icons/Feather';
+import AntDesign from '@expo/vector-icons/AntDesign';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 
 import { HapticTab } from '@/components/HapticTab';
 import { IconSymbol } from '@/components/ui/IconSymbol';
@@ -30,14 +36,38 @@ export default function TabLayout() {
         name="index"
         options={{
           title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          tabBarIcon: ({ color }) => <Octicons name="home" size={24} color="lightgray" />,
         }}
       />
+        <Tabs.Screen
+        name="orders"
+        options={{
+          title: 'Orders',
+          tabBarIcon: ({ color }) => <Feather name="shopping-cart" size={24} color="lightgray" />,
+        }}
+      />
+
+        <Tabs.Screen
+        name="message"
+        options={{
+          title: 'Message',
+          tabBarIcon: ({ color }) => <AntDesign name="message1" size={24} color="lightgray" />,
+        }}
+      />
+
         <Tabs.Screen
         name="ewallet"
         options={{
           title: 'E-Wallet',
           tabBarIcon: ({ color }) => <Ionicons name="wallet-outline" size={24} color="#ddd" />,
+        }}
+      />
+
+        <Tabs.Screen
+        name="profile"
+        options={{
+          title: 'Profile',
+          tabBarIcon: ({ color }) => <MaterialCommunityIcons name="head-outline" size={24} color="lightgray" />,
         }}
       />
   
