@@ -20,14 +20,14 @@ CREATE TABLE IF NOT EXISTS categories (
 -- Restaurants table
 CREATE TABLE IF NOT EXISTS restaurants (
     restaurant_id SERIAL PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
+    restaurant_name VARCHAR(255) NOT NULL,
     address VARCHAR(255) NOT NULL,
     phone VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     category_id INT NOT NULL,
-    image_url VARCHAR(550) DEFAULT NULL
+    image_url VARCHAR(550) DEFAULT NULL,
     FOREIGN KEY (category_id) REFERENCES categories(category_id)
 );
 
