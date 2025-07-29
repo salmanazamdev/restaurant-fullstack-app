@@ -1,142 +1,141 @@
-//Index act as the homepage
-
 import { useEffect, useState } from "react";
-import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity } from "react-native";
-import axios from 'axios'
+import {View, Text, StyleSheet, Image, ScrollView, TextInput, TouchableOpacity} from "react-native";
+import axios from "axios";
 import { IP_ADDRESS } from "@/constants/endpoint";
 import { useRouter } from "expo-router";
+
 export default function Home() {
   const router = useRouter();
-  const [categories, setCategories] = useState([])
+  const [categories, setCategories] = useState([]);
 
-  useEffect(()=> {
+  useEffect(() => {
     getCategories();
-  }, [] )
+  }, []);
 
   const getCategories = async () => {
-    const response = await axios.get(`${IP_ADDRESS}/categories`)
-    setCategories(response.data)
-  }
-
+    const response = await axios.get(`${IP_ADDRESS}/categories`);
+    setCategories(response.data);
+  };
 
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
 
-      {categories.map((data, index)=> {
-        return (
-          <TouchableOpacity onPress={()=> router.push(`/categories/${data.category_id}`)}>
-            <Text>{data.category_name}</Text>
-          </TouchableOpacity>
-        )
-      })
-
-      }
-
-      <View style={styles.header}>
-        <Image
-          source={require("@/assets/images/khaana.png")}
-          style={styles.logo}
-        />
-        <Text style={styles.welcome}>Welcome to Khaana Express</Text>
-        <Text style={styles.subtitle}>Your favorite meals, delivered fast!</Text>
-      </View>
-
-      <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Popular Categories</Text>
-        {/* You can replace below with a FlatList of categories */}
-        <View style={styles.categoryRow}>
-          <TouchableOpacity style={styles.card}>
-            <Text style={styles.cardText}>🍔 Burgers</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.card}>
-            <Text style={styles.cardText}>🍕 Pizza</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.card}>
-            <Text style={styles.cardText}>🥗 Healthy</Text>
-          </TouchableOpacity>
+      <View style={styles.topBar}>
+        <View style={styles.locationWrapper}>
+          <Image
+            source={require("@/assets/images/khaana.png")}
+            style={styles.avatar}
+          />
+          <View>
+            <Text style={styles.deliveryLabel}>Deliver to</Text>
+            <Text style={styles.locationText}>Times Square</Text>
+          </View>
         </View>
       </View>
 
-      <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Nearby Restaurants</Text>
-        {/* Replace with dynamic restaurant cards */}
-        <TouchableOpacity style={styles.restaurantCard}>
-          <Text style={styles.restaurantName}>Food Fusion</Text>
-          <Text style={styles.restaurantInfo}>Fast Food • 2.5 km</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.restaurantCard}>
-          <Text style={styles.restaurantName}>Green Bites</Text>
-          <Text style={styles.restaurantInfo}>Healthy • 1.2 km</Text>
-        </TouchableOpacity>
+
+      <View style={styles.searchContainer}>
+        <TextInput
+          placeholder="Kya khana pasand karo gey ustad?"
+          style={styles.searchInput}
+        />
+      </View>
+
+
+      <View style={styles.categoriesSection}>
+        <Text style={styles.sectionTitle}>Categories</Text>
+        <View style={styles.categoryGrid}>
+          {categories.slice(0, 9).map((item, index) => (
+            <TouchableOpacity
+              key={item.category_id}
+              style={styles.categoryItem}
+              onPress={() => router.push(`/categories/${item.category_id}`)}
+            >
+              <Image
+                source={require("@/assets/images/apple.png")}
+                style={styles.categoryImage}
+              />
+              <Text style={styles.categoryLabel}>
+                {item.category_name.length > 8
+                  ? item.category_name.slice(0, 8) + "..."
+                  : item.category_name}
+              </Text>
+            </TouchableOpacity>
+          ))}
+        </View>
       </View>
     </ScrollView>
   );
 }
 
-const customGreen = "#1a974e";
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    padding: 20,
+    paddingHorizontal: 20,
+    paddingTop: 50,
   },
-  header: {
+  topBar: {
     marginBottom: 20,
   },
-  logo: {
-    width: 180,
-    height: 100,
-    resizeMode: "contain",
-    marginBottom: 10,
+  locationWrapper: {
+    flexDirection: "row",
+    alignItems: "center",
   },
-  welcome: {
-    fontSize: 24,
+  avatar: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    marginRight: 10,
+  },
+  deliveryLabel: {
+    fontSize: 12,
+    color: "#888",
+  },
+  locationText: {
+    fontSize: 16,
     fontWeight: "bold",
-    color: "#000",
   },
-  subtitle: {
+  searchContainer: {
+    flexDirection: "row",
+    backgroundColor: "#f2f2f2",
+    borderRadius: 12,
+    paddingHorizontal: 12,
+    paddingVertical: 10,
+    marginBottom: 20,
+  },
+  searchInput: {
+    flex: 1,
     fontSize: 14,
-    color: "#555",
   },
-  section: {
-    marginTop: 30,
+  categoriesSection: {
+    marginBottom: 30,
   },
   sectionTitle: {
     fontSize: 18,
     fontWeight: "bold",
-    color: customGreen,
-    marginBottom: 12,
+    color: "#000",
+    marginBottom: 16,
   },
-  categoryRow: {
+  categoryGrid: {
     flexDirection: "row",
+    flexWrap: "wrap",
     justifyContent: "space-between",
   },
-  card: {
-    backgroundColor: "#f2f2f2",
-    borderRadius: 12,
-    padding: 16,
+  categoryItem: {
     width: "30%",
     alignItems: "center",
+    marginBottom: 20,
   },
-  cardText: {
-    color: "#000",
-    fontWeight: "600",
+  categoryImage: {
+    width: 50,
+    height: 50,
+    resizeMode: "contain",
+    marginBottom: 8,
   },
-  restaurantCard: {
-    backgroundColor: "#f9f9f9",
-    padding: 16,
-    borderRadius: 12,
-    marginBottom: 10,
-  },
-  restaurantName: {
-    fontSize: 16,
-    fontWeight: "bold",
-    color: "#000",
-  },
-  restaurantInfo: {
+  categoryLabel: {
     fontSize: 12,
-    color: "green",
-    marginTop: 4,
+    color: "#000",
+    textAlign: "center",
   },
 });
