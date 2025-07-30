@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { View, Text, StyleSheet, FlatList, Image, TouchableOpacity } from "react-native";
 import axios from "axios";
-import { useLocalSearchParams, useRouter } from "expo-router"; 
+import { useLocalSearchParams, useRouter } from "expo-router";
 import { IP_ADDRESS } from "@/constants/endpoint";
 import { Ionicons } from "@expo/vector-icons";
 
 export default function CategoryRestaurants() {
   const { id } = useLocalSearchParams();
-  const router = useRouter(); 
+  const router = useRouter();
   const [restaurants, setRestaurants] = useState([]);
 
   useEffect(() => {
@@ -23,26 +23,48 @@ export default function CategoryRestaurants() {
     }
   };
 
+  // Dummy handler for favorite icon (implement as needed)
+  const handleFavoritePress = (restaurantId) => {
+    // Toggle favorite logic here
+  };
+
+  const renderCard = ({ item }) => (
+    <View style={styles.card}>
+      <Image source={{ uri: item.image_url }} style={styles.cardImage} />
+      <View style={styles.cardContent}>
+        <Text style={styles.cardTitle}>{item.restaurant_name}</Text>
+        <View style={styles.cardInfoRow}>
+          <Text style={styles.infoText}>
+            <Ionicons name="star" size={14} color="#FFA500" /> {item.avg_rating} ({item.rating_count}k)
+          </Text>
+        </View>
+        <View style={styles.cardInfoRow}>
+          <Text style={styles.priceText}>${item.price}</Text>
+          <TouchableOpacity onPress={() => handleFavoritePress(item.restaurant_id)}>
+            <Ionicons
+              name={item.isFavorite ? "heart" : "heart-outline"}
+              size={22}
+              color={item.isFavorite ? "#e74c3c" : "#bbb"}
+            />
+          </TouchableOpacity>
+        </View>
+      </View>
+    </View>
+  );
+
   return (
     <View style={styles.container}>
-
       <View style={styles.titleRow}>
         <TouchableOpacity onPress={() => router.back()} style={styles.iconBtn}>
           <Ionicons name="arrow-back" size={24} color="#010d06ff" />
         </TouchableOpacity>
         <Text style={styles.title}>List of Restaurants</Text>
       </View>
-
       <FlatList
         data={restaurants}
         keyExtractor={(item) => item.restaurant_id.toString()}
-        renderItem={({ item }) => (
-          <TouchableOpacity style={styles.card}>
-            <Image source={{ uri: item.image_url }} style={styles.image} />
-            <Text style={styles.name}>{item.restaurant_name}</Text>
-            <Text style={styles.desc}>{item.description}</Text>
-          </TouchableOpacity>
-        )}
+        renderItem={renderCard}
+        showsVerticalScrollIndicator={false}
       />
     </View>
   );
@@ -60,14 +82,23 @@ const styles = StyleSheet.create({
     marginRight: 8,
     padding: 4,
   },
-  icon: {
-    fontSize: 22,
-    color: "#1a974e",
-    fontWeight: "bold",
-  },
   title: { fontSize: 22, fontWeight: "bold" },
-  card: { marginBottom: 20, backgroundColor: "#f9f9f9", borderRadius: 12, padding: 12 },
-  image: { width: "100%", height: 120, borderRadius: 8, marginBottom: 8 },
-  name: { fontSize: 16, fontWeight: "bold" },
-  desc: { fontSize: 13, color: "#666" },
+  card: {
+    flexDirection: "row",
+    backgroundColor: "#fff",
+    borderRadius: 16,
+    marginBottom: 18,
+    padding: 12,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOpacity: 0.05,
+    shadowRadius: 8,
+    elevation: 2,
+  },
+  cardImage: { width: 70, height: 70, borderRadius: 12, marginRight: 14 },
+  cardContent: { flex: 1 },
+  cardTitle: { fontSize: 16, fontWeight: "bold", marginBottom: 4 },
+  cardInfoRow: { flexDirection: "row", alignItems: "center", marginBottom: 2 },
+  infoText: { fontSize: 13, color: "#888", marginRight: 12 },
+  priceText: { fontSize: 15, color: "#1a974e", fontWeight: "bold", flex: 1 },
 });
