@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { View, Text, StyleSheet, FlatList, Image, TouchableOpacity } from "react-native";
 import axios from "axios";
-import { useLocalSearchParams } from "expo-router";
+import { useLocalSearchParams, useRouter } from "expo-router"; 
 import { IP_ADDRESS } from "@/constants/endpoint";
+import { Ionicons } from "@expo/vector-icons";
 
 export default function CategoryRestaurants() {
   const { id } = useLocalSearchParams();
+  const router = useRouter(); 
   const [restaurants, setRestaurants] = useState([]);
 
   useEffect(() => {
@@ -23,7 +25,14 @@ export default function CategoryRestaurants() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>List of Restaurants</Text>
+
+      <View style={styles.titleRow}>
+        <TouchableOpacity onPress={() => router.back()} style={styles.iconBtn}>
+          <Ionicons name="arrow-back" size={24} color="#010d06ff" />
+        </TouchableOpacity>
+        <Text style={styles.title}>List of Restaurants</Text>
+      </View>
+
       <FlatList
         data={restaurants}
         keyExtractor={(item) => item.restaurant_id.toString()}
@@ -41,7 +50,22 @@ export default function CategoryRestaurants() {
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: "#fff", padding: 16 },
-  title: { fontSize: 22, fontWeight: "bold", marginBottom: 16, marginTop: 30 },
+  titleRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginTop: 30,
+    marginBottom: 16,
+  },
+  iconBtn: {
+    marginRight: 8,
+    padding: 4,
+  },
+  icon: {
+    fontSize: 22,
+    color: "#1a974e",
+    fontWeight: "bold",
+  },
+  title: { fontSize: 22, fontWeight: "bold" },
   card: { marginBottom: 20, backgroundColor: "#f9f9f9", borderRadius: 12, padding: 12 },
   image: { width: "100%", height: 120, borderRadius: 8, marginBottom: 8 },
   name: { fontSize: 16, fontWeight: "bold" },
