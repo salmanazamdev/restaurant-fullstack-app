@@ -29,6 +29,9 @@ const {
   deleteCustomer
 } = require('./functions/customer');
 
+
+const getRating = require('./functions/restaurant_ratings/getRating');
+
 // Import Order API Handlers
 const {
   createOrder,
@@ -38,6 +41,7 @@ const {
 const getCategories = require('./functions/categories/getCategories');
 const loggin = require('./middleware/loggin');
 const getRestaurantsByCategoryId = require('./functions/restaurants/getRestaurantsByCategoryId');
+const getRatingByRestaurantId = require('./functions/restaurant_ratings/getRatingByRestaurantId');
 
 // Initialize Express App
 const app = express();
@@ -56,6 +60,9 @@ app.post('/restaurants', loggin, createRestaurant);
 app.get('/restaurants', loggin, getRestaurants);
 app.put('/restaurants/:id', loggin, updateRestaurant);
 app.delete('/restaurants/:id', loggin, deleteRestaurant);
+
+// restaant rating
+app.get('/restaurants/:restaurantId/rating', loggin, getRatingByRestaurantId);
 
 // Menu CRUD APIs
 app.post('/menus', loggin, createMenuItem);

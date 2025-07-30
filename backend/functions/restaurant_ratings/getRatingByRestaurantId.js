@@ -1,6 +1,6 @@
 const pool = require('../../database/database');
 
-const getRating = async (req, res) => {
+const getRatingsByRestaurantId = async (req, res) => {
   const { restaurantId } = req.params;
   try {
     const result = await pool.query(
@@ -18,4 +18,4 @@ const getRating = async (req, res) => {
   }
 };
 
-module.exports = getRating;
+module.exports = getRatingsByRestaurantId;

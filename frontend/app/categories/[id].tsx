@@ -23,9 +23,7 @@ export default function CategoryRestaurants() {
     }
   };
 
-  // Dummy handler for favorite icon (implement as needed)
   const handleFavoritePress = (restaurantId) => {
-    // Toggle favorite logic here
   };
 
   const renderCard = ({ item }) => (
