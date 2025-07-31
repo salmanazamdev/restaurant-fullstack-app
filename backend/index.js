@@ -47,7 +47,6 @@ const loggin = require('./middleware/loggin');
 const getRestaurantsByCategoryId = require('./functions/restaurants/getRestaurantsByCategoryId');
 const getRestaurantById = require('./functions/restaurants/getRestaurantById');
 
-
 // Initialize Express App
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -87,7 +86,7 @@ app.put('/orders/:id', loggin, updateOrderById);
 
 // Categories
 app.get('/categories', loggin, getCategories);
-app.get('/categories/:categoryId/Restaurants', loggin, getRestaurantsByCategoryId);
+app.get('/categories/:categoryId/restaurants', loggin, getRestaurantsByCategoryId);
 
 
 
