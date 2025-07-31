@@ -16,7 +16,7 @@ const getRestaurantsByCategoryId = async (req,res) => {
 
         res.json(result.rows);
     } catch (error) {
-        console.error('Error fetching menu items:', error);
+        console.error('Error fetching restaurants in such category:', error);
         res.status(500).json({ message: 'Internal server error' });
     }
 }
