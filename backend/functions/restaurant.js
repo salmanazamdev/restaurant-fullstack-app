@@ -18,7 +18,8 @@ const createRestaurant = async (req, res) => {
 // Get all restaurants
 const getRestaurants = async (req, res) => {
     try {
-        const result = await pool.query('SELECT * FROM restaurants');
+        const restaurentResult = await pool.query('SELECT * FROM restaurants');
+        console.log(restaurentResult.rows[0])
         res.status(200).json(result.rows);
     } catch (err) {
         res.status(500).json({ error: 'Failed to fetch restaurants' });
