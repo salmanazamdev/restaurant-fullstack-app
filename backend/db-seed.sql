@@ -3,7 +3,6 @@ INSERT INTO users (username, email, password)
 VALUES 
 ('salman', 'salman.dev@sample.com', 'hashedpassword1'),
 ('essa', 'essa.khan@sample.com', 'hashedpassword2');
-('abc', 'abc@gmail.com', 'abc');
 
 
 -- Seed Categories

@@ -27,6 +27,7 @@ export default function CategoryRestaurants() {
   };
 
   const renderCard = ({ item }) => (
+    <TouchableOpacity onPress={() => router.push(`/restaurants/${item.restaurant_id}`)}>
     <View style={styles.card}>
       <Image source={{ uri: item.image_url }} style={styles.cardImage} />
       <View style={styles.cardContent}>
@@ -48,6 +49,7 @@ export default function CategoryRestaurants() {
         </View>
       </View>
     </View>
+  </TouchableOpacity>
   );
 
   return (
