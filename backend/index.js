@@ -64,7 +64,7 @@ app.post('/restaurants', loggin, createRestaurant);
 app.get('/restaurants', loggin, getRestaurants);
 app.put('/restaurants/:id', loggin, updateRestaurant);
 app.delete('/restaurants/:id', loggin, deleteRestaurant);
-app.get('/restaurants/:id', loggin, getRestaurantById);
+app.get('/restaurants/:restaurantId', loggin, getRestaurantById);
 
 
 // Menu CRUD APIs
