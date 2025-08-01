@@ -88,6 +88,14 @@ app.put('/orders/:id', loggin, updateOrderById);
 app.get('/categories', loggin, getCategories);
 app.get('/categories/:categoryId/restaurants', loggin, getRestaurantsByCategoryId);
 
+// Menu Items new
+const getMenuItemById = require('./functions/menu_items/getMenuItemById');
+app.get('/menu-items/:id', loggin, getMenuItemById);
+
+
+//Ratings by customer Id
+const getRatingsByRestaurantId = require('./functions/restaurant_ratings/getRatingsByRestaurantId');
+app.get('/restaurants/:restaurantId/ratings', loggin, getRatingsByRestaurantId);
 
 
 // Start the Server

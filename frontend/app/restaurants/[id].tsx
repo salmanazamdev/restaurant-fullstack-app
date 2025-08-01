@@ -52,7 +52,7 @@ export default function RestaurantDetails() {
         <Text style={styles.title}>{restaurant.restaurant_name}</Text>
         <TouchableOpacity
           style={styles.row}
-          onPress={() => router.push(`/restaurants/${id}/ratings`)}
+          onPress={() => router.push(`/ratings/${id}`)}
         >
           <Ionicons name="star" size={18} color="#FFA500" />
           <Text style={styles.ratingText}>
@@ -75,20 +75,24 @@ export default function RestaurantDetails() {
 
 
       <Text style={styles.menuTitle}>Konsi dish khayein gey ustad</Text>
-      <FlatList
-        data={restaurant.menu_items}
-        keyExtractor={(item) => item.item_id.toString()}
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        contentContainerStyle={{ paddingLeft: 8, paddingBottom: 24 }}
-        renderItem={({ item }) => (
-          <View style={styles.menuCard}>
-            <Image source={{ uri: item.image_url || restaurant.image_url }} style={styles.menuImage} />
-            <Text style={styles.menuName}>{item.name}</Text>
-            <Text style={styles.menuPrice}>${item.price}</Text>
-          </View>
-        )}
-      />
+<FlatList
+  data={restaurant.menu_items}
+  keyExtractor={(item) => item.item_id.toString()}
+  horizontal
+  showsHorizontalScrollIndicator={false}
+  contentContainerStyle={{ paddingLeft: 8, paddingBottom: 24 }}
+  renderItem={({ item }) => (
+    <TouchableOpacity
+      style={styles.menuCard}
+      activeOpacity={0.8}
+      onPress={() => router.push(`/menu_items/${item.item_id}`)}
+    >
+      <Image source={{ uri: item.image_url || restaurant.image_url }} style={styles.menuImage} />
+      <Text style={styles.menuName}>{item.name}</Text>
+      <Text style={styles.menuPrice}>${item.price}</Text>
+    </TouchableOpacity>
+  )}
+/>
     </ScrollView>
   );
 }
