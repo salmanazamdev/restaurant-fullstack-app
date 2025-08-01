@@ -189,59 +189,59 @@ INSERT INTO restaurants (restaurant_name, address, phone, email, category_id, im
 -- Seed Data Menu Items (restaurand id 20 plus)
 -- Vegetable (restaurant_id 21 & 22)
 INSERT INTO menu_items (restaurant_id, name, description, price, image_url) VALUES
-(21, 'Stuffed Bell Peppers', 'Bell peppers stuffed with rice and veggies.', 7.99, 'https://images.pexels.com/photos/4381388/pexels-photo-4381388.jpeg'),
-(21, 'Spinach Lasagna', 'Lasagna with spinach and ricotta.', 8.99, 'https://images.pexels.com/photos/1437267/pexels-photo-1437267.jpeg'),
-(22, 'Veggie Stir Fry', 'Mixed vegetables stir-fried in soy sauce.', 7.49, 'https://images.pexels.com/photos/1435891/pexels-photo-1435891.jpeg'),
-(22, 'Mushroom Risotto', 'Creamy risotto with mushrooms.', 9.49, 'https://images.pexels.com/photos/167464/pexels-photo-167464.jpeg');
+(21, 'Stuffed Bell Peppers', 'Bell peppers stuffed with rice and veggies.', 7.99, 'https://images.pexels.com/photos/3026808/pexels-photo-3026808.jpeg'),
+(21, 'Spinach Lasagna', 'Lasagna with spinach and ricotta.', 8.99, 'https://images.pexels.com/photos/3026808/pexels-photo-3026808.jpeg'),
+(22, 'Veggie Stir Fry', 'Mixed vegetables stir-fried in soy sauce.', 7.49, 'https://images.pexels.com/photos/3026808/pexels-photo-3026808.jpeg'),
+(22, 'Mushroom Risotto', 'Creamy risotto with mushrooms.', 9.49, 'https://images.pexels.com/photos/3026808/pexels-photo-3026808.jpeg');
 
 -- Dessert (restaurant_id 23 & 24)
 INSERT INTO menu_items (restaurant_id, name, description, price, image_url) VALUES
 (23, 'Red Velvet Cake', 'Classic red velvet with cream cheese.', 6.99, 'https://images.pexels.com/photos/3026808/pexels-photo-3026808.jpeg'),
-(23, 'Chocolate Mousse', 'Rich chocolate mousse dessert.', 5.99, 'https://images.pexels.com/photos/7957786/pexels-photo-7957786.jpeg'),
-(24, 'Vanilla Ice Cream', 'Homemade vanilla ice cream.', 4.99, 'https://images.pexels.com/photos/3611832/pexels-photo-3611832.jpeg'),
-(24, 'Mango Sorbet', 'Refreshing mango sorbet.', 5.49, 'https://images.pexels.com/photos/3022929/pexels-photo-3022929.jpeg');
+(23, 'Chocolate Mousse', 'Rich chocolate mousse dessert.', 5.99, 'https://images.pexels.com/photos/3026808/pexels-photo-3026808.jpeg'),
+(24, 'Vanilla Ice Cream', 'Homemade vanilla ice cream.', 4.99, 'https://images.pexels.com/photos/3026808/pexels-photo-3026808.jpeg'),
+(24, 'Mango Sorbet', 'Refreshing mango sorbet.', 5.49, 'https://images.pexels.com/photos/3026808/pexels-photo-3026808.jpeg');
 
 -- Drink (restaurant_id 25 & 26)
 INSERT INTO menu_items (restaurant_id, name, description, price, image_url) VALUES
-(25, 'Fresh Orange Juice', 'Squeezed orange juice.', 3.99, 'https://images.pexels.com/photos/259321/pexels-photo-259321.jpeg'),
+(25, 'Fresh Orange Juice', 'Squeezed orange juice.', 3.99, 'https://images.pexels.com/photos/102104/pexels-photo-102104.jpeg'),
 (25, 'Apple Cider', 'Chilled apple cider.', 4.49, 'https://images.pexels.com/photos/102104/pexels-photo-102104.jpeg'),
-(26, 'Cappuccino', 'Espresso with steamed milk foam.', 3.99, 'https://images.pexels.com/photos/1407956/pexels-photo-1407956.jpeg'),
-(26, 'Iced Latte', 'Cold coffee with milk.', 4.49, 'https://images.pexels.com/photos/298864/pexels-photo-298864.jpeg');
+(26, 'Cappuccino', 'Espresso with steamed milk foam.', 3.99, 'https://images.pexels.com/photos/102104/pexels-photo-102104.jpeg'),
+(26, 'Iced Latte', 'Cold coffee with milk.', 4.49, 'https://images.pexels.com/photos/102104/pexels-photo-102104.jpeg');
 
 -- Bread (restaurant_id 27 & 28)
 INSERT INTO menu_items (restaurant_id, name, description, price, image_url) VALUES
-(27, 'Sourdough Bread', 'Artisan sourdough loaf.', 3.99, 'https://images.pexels.com/photos/4109967/pexels-photo-4109967.jpeg'),
-(27, 'Cinnamon Rolls', 'Sweet rolls with cinnamon.', 4.99, 'https://images.pexels.com/photos/302276/pexels-photo-302276.jpeg'),
+(27, 'Sourdough Bread', 'Artisan sourdough loaf.', 3.99, 'https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg'),
+(27, 'Cinnamon Rolls', 'Sweet rolls with cinnamon.', 4.99, 'https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg'),
 (28, 'Baguette', 'Classic French baguette.', 2.99, 'https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg'),
-(28, 'Focaccia', 'Italian flatbread with herbs.', 3.49, 'https://images.pexels.com/photos/365962/pexels-photo-365962.jpeg');
+(28, 'Focaccia', 'Italian flatbread with herbs.', 3.49, 'https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg');
 
 -- Croissant (restaurant_id 29 & 30)
 INSERT INTO menu_items (restaurant_id, name, description, price, image_url) VALUES
 (29, 'Chocolate Croissant', 'Croissant with chocolate filling.', 3.99, 'https://images.pexels.com/photos/674574/pexels-photo-674574.jpeg'),
 (29, 'Ham & Cheese Croissant', 'Savory croissant with ham and cheese.', 4.49, 'https://images.pexels.com/photos/357743/pexels-photo-357743.jpeg'),
 (30, 'Raspberry Danish', 'Danish pastry with raspberry jam.', 4.99, 'https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg'),
-(30, 'Butter Roll', 'Soft roll with butter.', 2.99, 'https://images.pexels.com/photos/1376133/pexels-photo-1376133.jpeg');
+(30, 'Butter Roll', 'Soft roll with butter.', 2.99, 'https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg');
 
 -- Pancakes (restaurant_id 31 & 32)
 INSERT INTO menu_items (restaurant_id, name, description, price, image_url) VALUES
 (31, 'Banana Pancakes', 'Pancakes with banana slices.', 6.99, 'https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg'),
-(31, 'Chocolate Chip Pancakes', 'Pancakes with chocolate chips.', 7.49, 'https://images.pexels.com/photos/3764642/pexels-photo-3764642.jpeg'),
-(32, 'Belgian Waffles', 'Crispy waffles with syrup.', 7.99, 'https://images.pexels.com/photos/376482/pexels-photo-376482.jpeg'),
-(32, 'Strawberry Waffles', 'Waffles with strawberries and cream.', 8.49, 'https://images.pexels.com/photos/376401/pexels-photo-376401.jpeg');
+(31, 'Chocolate Chip Pancakes', 'Pancakes with chocolate chips.', 7.49, 'https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg'),
+(32, 'Belgian Waffles', 'Crispy waffles with syrup.', 7.99, 'https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg'),
+(32, 'Strawberry Waffles', 'Waffles with strawberries and cream.', 8.49, 'https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg');
 
 -- Cheese (restaurant_id 33 & 34)
 INSERT INTO menu_items (restaurant_id, name, description, price, image_url) VALUES
 (33, 'Cheddar Melt', 'Melted cheddar cheese sandwich.', 5.99, 'https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg'),
-(33, 'Parmesan Bites', 'Baked parmesan cheese snacks.', 4.99, 'https://images.pexels.com/photos/1640778/pexels-photo-1640778.jpeg'),
-(34, 'Blue Cheese Salad', 'Salad with blue cheese dressing.', 6.49, 'https://images.pexels.com/photos/1437262/pexels-photo-1437262.jpeg'),
-(34, 'Cheese Fondue', 'Classic Swiss cheese fondue.', 8.99, 'https://images.pexels.com/photos/1640779/pexels-photo-1640779.jpeg');
+(33, 'Parmesan Bites', 'Baked parmesan cheese snacks.', 4.99, 'https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg'),
+(34, 'Blue Cheese Salad', 'Salad with blue cheese dressing.', 6.49, 'https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg'),
+(34, 'Cheese Fondue', 'Classic Swiss cheese fondue.', 8.99, 'https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg');
 
 -- FrenchFries (restaurant_id 35 & 36)
 INSERT INTO menu_items (restaurant_id, name, description, price, image_url) VALUES
 (35, 'Chili Cheese Fries', 'Fries topped with chili and cheese.', 5.99, 'https://images.pexels.com/photos/1583884/pexels-photo-1583884.jpeg'),
-(35, 'Truffle Fries', 'Fries tossed in truffle oil.', 6.49, 'https://images.pexels.com/photos/616354/pexels-photo-616354.jpeg'),
-(36, 'Potato Wedges', 'Seasoned potato wedges.', 4.99, 'https://images.pexels.com/photos/5081524/pexels-photo-5081524.jpeg'),
-(36, 'Sweet Potato Fries', 'Crispy sweet potato fries.', 5.49, 'https://images.pexels.com/photos/3764643/pexels-photo-3764643.jpeg');
+(35, 'Truffle Fries', 'Fries tossed in truffle oil.', 6.49, 'https://images.pexels.com/photos/1583884/pexels-photo-1583884.jpeg'),
+(36, 'Potato Wedges', 'Seasoned potato wedges.', 4.99, 'https://images.pexels.com/photos/1583884/pexels-photo-1583884.jpeg'),
+(36, 'Sweet Potato Fries', 'Crispy sweet potato fries.', 5.49, 'https://images.pexels.com/photos/1583884/pexels-photo-1583884.jpeg');
 
 
 -- Seed Restaurant Ratings
