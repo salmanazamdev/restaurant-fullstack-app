@@ -5,6 +5,9 @@ import { useLocalSearchParams, useRouter } from "expo-router";
 import { IP_ADDRESS } from "@/constants/endpoint";
 import { Ionicons } from "@expo/vector-icons";
 
+//icons library imported
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+
 export default function RestaurantDetails() {
   const { id } = useLocalSearchParams();
   const router = useRouter();
@@ -33,7 +36,7 @@ export default function RestaurantDetails() {
 
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
-      {/* Top Image and Icons */}
+
       <View style={styles.imageWrapper}>
         <Image source={{ uri: restaurant.image_url }} style={styles.image} />
         <TouchableOpacity style={styles.topLeftIcon} onPress={() => router.back()}>
@@ -44,7 +47,7 @@ export default function RestaurantDetails() {
         </TouchableOpacity>
       </View>
 
-      {/* Restaurant Info */}
+
       <View style={styles.infoSection}>
         <Text style={styles.title}>{restaurant.restaurant_name}</Text>
         <TouchableOpacity
@@ -62,16 +65,16 @@ export default function RestaurantDetails() {
         </View>
         <View style={styles.row}>
           <Ionicons name="pricetag" size={18} color="#1a974e" />
-          <Text style={styles.priceText}>${restaurant.price}</Text>
+          <Text style={styles.priceText}>Starting from ${restaurant.price}</Text>
         </View>
         <TouchableOpacity style={styles.row} activeOpacity={0.7}>
-          <Ionicons name="pricetags" size={18} color="#1a974e" />
+          <MaterialCommunityIcons name="sale" size={24} marginTop="20" color="green" />
           <Text style={styles.offerText}>Offers are available</Text>
         </TouchableOpacity>
       </View>
 
-      {/* Menu Items */}
-      <Text style={styles.menuTitle}>Is Restaurant me apko ye khaaney ko miley ga</Text>
+
+      <Text style={styles.menuTitle}>Konsi dish khayein gey ustad</Text>
       <FlatList
         data={restaurant.menu_items}
         keyExtractor={(item) => item.item_id.toString()}
@@ -101,10 +104,10 @@ const styles = StyleSheet.create({
   row: { flexDirection: "row", alignItems: "center", marginBottom: 8 },
   ratingText: { fontSize: 16, color: "#FFA500", marginLeft: 6, fontWeight: "bold" },
   ratingCount: { color: "#888", fontWeight: "normal", fontSize: 14 },
-  locationText: { fontSize: 15, color: "#1a974e", marginLeft: 6 },
-  priceText: { fontSize: 15, color: "#1a974e", marginLeft: 6, fontWeight: "bold" },
-  offerText: { fontSize: 15, color: "#1a974e", marginLeft: 6, fontWeight: "bold" },
-  menuTitle: { fontSize: 18, fontWeight: "bold", color: "#222", marginLeft: 18, marginTop: 18, marginBottom: 10 },
+  locationText: { fontSize: 15, color: "black", marginLeft: 6 },
+  priceText: { fontSize: 15, color: "black", marginLeft: 6 },
+  offerText: { fontSize: 18, color: "#1a974e", marginLeft: 5, fontWeight: "bold", marginTop:"20" },
+  menuTitle: { fontSize: 20, fontWeight: "bold", color: "#222", marginLeft: 18, marginTop: 18, marginBottom: 10 },
   menuCard: {
     width: 120,
     backgroundColor: "#f9f9f9",
