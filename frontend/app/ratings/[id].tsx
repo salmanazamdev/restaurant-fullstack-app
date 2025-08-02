@@ -98,7 +98,7 @@ export default function RatingsPage() {
             <View style={styles.reviewFooter}>
               <Ionicons name="heart" size={16} color="#e74c3c" />
               <Text style={styles.likeCount}>938</Text>
-              <Text style={styles.timeAgo}>6 days ago</Text>
+              <Text style={styles.timeAgo}>few days ago</Text>
             </View>
           </View>
         )}
