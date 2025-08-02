@@ -96,8 +96,13 @@ export default function RatingsPage() {
             </View>
             <Text style={styles.reviewText}>{item.review}</Text>
             <View style={styles.reviewFooter}>
-              <Ionicons name="heart" size={16} color="#e74c3c" />
-              <Text style={styles.likeCount}>938</Text>
+
+            {/*  <Ionicons name="heart" size={16} color="#e74c3c" />
+              <Text style={styles.likeCount}>938</Text> 
+              
+              commented this box, will intergate the functionality later
+              */}
+
               <Text style={styles.timeAgo}>few days ago</Text>
             </View>
           </View>
