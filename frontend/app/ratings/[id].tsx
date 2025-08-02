@@ -84,7 +84,7 @@ export default function RatingsPage() {
           <View style={styles.reviewCard}>
             <View style={styles.reviewHeader}>
               <Image
-                source={{ uri: "https://randomuser.me/api/portraits/men/1.jpg" }}
+                source={{ uri: "https://cdn-icons-png.flaticon.com/128/16683/16683419.png" }}
                 style={styles.avatar}
               />
               <Text style={styles.username}>{item.username}</Text>
