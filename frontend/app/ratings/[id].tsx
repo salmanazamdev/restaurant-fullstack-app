@@ -143,6 +143,5 @@ const styles = StyleSheet.create({
   username: { fontSize: 15, fontWeight: "bold", color: "#222" },
   reviewText: { fontSize: 14, color: "#444", marginBottom: 8, marginTop: 2 },
   reviewFooter: { flexDirection: "row", alignItems: "center", marginTop: 4 },
-  likeCount: { fontSize: 13, color: "#e74c3c", marginLeft: 4, marginRight: 12 },
   timeAgo: { fontSize: 12, color: "#888" },
 });
