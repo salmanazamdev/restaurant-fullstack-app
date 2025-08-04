@@ -102,8 +102,8 @@ app.get('/restaurants/:restaurantId/ratings', loggin, getRatingsByRestaurantId);
 const addItemsToCart = require('./functions/orders/addItemsToCart');
 const getCartItemsByUserId = require('./functions/orders/getCartItemsByUserId');
 
-app.post('/cart/add', loggin, addItemsToCart);
-app.get('/cart/user/:userId', loggin, getCartItemsByUserId);
+app.post('/orders/add', loggin, addItemsToCart);
+app.get('/orders/user/:userId', loggin, getCartItemsByUserId);
 
 
 

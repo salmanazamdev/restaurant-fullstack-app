@@ -6,7 +6,7 @@ const addItemsToCart = async (req, res) => {
   try {
     const result = await pool.query(
       'INSERT INTO order_items (order_id, menu_item_id, quantity, note) VALUES ($1, $2, $3, $4) RETURNING *',
-      [orderId, menuItemId, quantity, note || null] // default to null if note not provided
+      [orderId, menuItemId, quantity, note || null] 
     );
 
     res.status(201).json({ message: 'Item added to cart', item: result.rows[0] });
