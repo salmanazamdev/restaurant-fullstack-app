@@ -1,9 +1,10 @@
 -- Users table
-CREATE TABLE IF NOT EXISTS users (
+CREATE TABLE users (
     user_id SERIAL PRIMARY KEY,
-    username VARCHAR(255) NOT NULL,
-    email VARCHAR(255) NOT NULL UNIQUE,
+    username VARCHAR(50) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL,
+    address TEXT, -- can be added/updated later
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     deleted_at TIMESTAMP DEFAULT NULL
@@ -66,7 +67,7 @@ CREATE TABLE IF NOT EXISTS menu_items (
     FOREIGN KEY (restaurant_id) REFERENCES restaurants(restaurant_id)
 );
 
--- Customers table (linked to restaurant -- not in use with current schema and logic, will seperate later)
+-- Customers table (linked to restaurant -- not in use with current schema and logic, will separate later)
 CREATE TABLE IF NOT EXISTS restaurant_customers (
     customer_id SERIAL PRIMARY KEY,
     restaurant_id INT NOT NULL,
@@ -78,7 +79,7 @@ CREATE TABLE IF NOT EXISTS restaurant_customers (
     FOREIGN KEY (restaurant_id) REFERENCES restaurants(restaurant_id)
 );
 
--- Orders table (linked to user and restaurant) Unlinked from customers because we currently assigned user the customer role
+-- Orders table (linked to user and restaurant)
 CREATE TABLE IF NOT EXISTS orders (
     order_id SERIAL PRIMARY KEY,
     user_id INT NOT NULL,
@@ -91,14 +92,40 @@ CREATE TABLE IF NOT EXISTS orders (
     FOREIGN KEY (restaurant_id) REFERENCES restaurants(restaurant_id)
 );
 
--- Order items table (links orders and menu items)
+-- Cart items table
+CREATE TABLE IF NOT EXISTS cart_items (
+    cart_item_id SERIAL PRIMARY KEY,
+    user_id INT NOT NULL,
+    menu_item_id INT NOT NULL,
+    restaurant_id INT NOT NULL,
+    quantity INT NOT NULL DEFAULT 1,
+    note TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(user_id),
+    FOREIGN KEY (menu_item_id) REFERENCES menu_items(item_id),
+    FOREIGN KEY (restaurant_id) REFERENCES restaurants(restaurant_id)
+);
+
+-- Order items table
 CREATE TABLE IF NOT EXISTS order_items (
     order_item_id SERIAL PRIMARY KEY,
     order_id INT NOT NULL,
     item_id INT NOT NULL,
     quantity INT NOT NULL,
-    note TEXT DEFAULT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (order_id) REFERENCES orders(order_id),
     FOREIGN KEY (item_id) REFERENCES menu_items(item_id)
+);
+
+-- Payment details table
+CREATE TABLE IF NOT EXISTS payment_details (
+    payment_id SERIAL PRIMARY KEY,
+    user_id INT NOT NULL,
+    order_id INT NOT NULL,
+    payment_method VARCHAR(100) NOT NULL,
+    payment_status VARCHAR(50) NOT NULL DEFAULT 'pending',
+    paid_at TIMESTAMP DEFAULT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(user_id),
+    FOREIGN KEY (order_id) REFERENCES orders(order_id)
 );
