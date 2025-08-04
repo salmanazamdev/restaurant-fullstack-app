@@ -115,7 +115,7 @@ export default function RatingsPage() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#fff" },
+  container: { flex: 1, backgroundColor: "#fff", marginTop:25  },
   headerRow: { flexDirection: "row", alignItems: "center", padding: 18, paddingBottom: 0 },
   backBtn: { marginRight: 8, padding: 4 },
   headerTitle: { fontSize: 22, fontWeight: "bold", color: "#222" },
