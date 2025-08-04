@@ -6,18 +6,18 @@ const getCartItemsByUserId = async (req, res) => {
   try {
     const result = await pool.query(`
       SELECT 
-        oi.order_item_id,
-        oi.quantity,
-        oi.note,
+        ci.cart_item_id,
+        ci.quantity,
+        ci.note,
         mi.menu_item_id,
         mi.name AS item_name,
         mi.price,
-        o.order_id,
-        o.status
-      FROM order_items oi
-      JOIN orders o ON oi.order_id = o.order_id
-      JOIN menu_items mi ON oi.menu_item_id = mi.menu_item_id
-      WHERE o.user_id = $1
+        r.restaurant_id,
+        r.name AS restaurant_name
+      FROM cart_items ci
+      JOIN menu_items mi ON ci.menu_item_id = mi.menu_item_id
+      JOIN restaurants r ON mi.restaurant_id = r.restaurant_id
+      WHERE ci.user_id = $1
     `, [userId]);
 
     res.status(200).json({ cartItems: result.rows });
