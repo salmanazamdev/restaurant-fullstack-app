@@ -66,7 +66,7 @@ CREATE TABLE IF NOT EXISTS menu_items (
     FOREIGN KEY (restaurant_id) REFERENCES restaurants(restaurant_id)
 );
 
--- Customers table (linked to restaurant)
+-- Customers table (linked to restaurant -- not in use with current schema and logic, will seperate later)
 CREATE TABLE IF NOT EXISTS restaurant_customers (
     customer_id SERIAL PRIMARY KEY,
     restaurant_id INT NOT NULL,
@@ -89,4 +89,16 @@ CREATE TABLE IF NOT EXISTS orders (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(user_id),
     FOREIGN KEY (restaurant_id) REFERENCES restaurants(restaurant_id)
+);
+
+-- Order items table (links orders and menu items)
+CREATE TABLE IF NOT EXISTS order_items (
+    order_item_id SERIAL PRIMARY KEY,
+    order_id INT NOT NULL,
+    item_id INT NOT NULL,
+    quantity INT NOT NULL,
+    note TEXT DEFAULT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (order_id) REFERENCES orders(order_id),
+    FOREIGN KEY (item_id) REFERENCES menu_items(item_id)
 );
