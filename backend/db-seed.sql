@@ -1,8 +1,8 @@
 -- Users
-INSERT INTO users (username, email, password)
+INSERT INTO users (username, email, password, address)
 VALUES 
-('salman', 'salman.dev@sample.com', 'hashedpassword1'),
-('essa', 'essa.khan@sample.com', 'hashedpassword2');
+('salman', 'salman.dev@sample.com', 'hashedpassword1', 'Somewhere on Earth'),
+('essa', 'essa.khan@sample.com', 'hashedpassword2', 'Somewhere on Earth');
 
 
 -- Seed Categories
