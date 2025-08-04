@@ -78,15 +78,15 @@ CREATE TABLE IF NOT EXISTS restaurant_customers (
     FOREIGN KEY (restaurant_id) REFERENCES restaurants(restaurant_id)
 );
 
--- Orders table (linked to customer and restaurant)
+-- Orders table (linked to user and restaurant) Unlinked from customers because we currently assigned user the customer role
 CREATE TABLE IF NOT EXISTS orders (
     order_id SERIAL PRIMARY KEY,
-    customer_id INT NOT NULL,
+    user_id INT NOT NULL,
     restaurant_id INT NOT NULL,
     total_amount DECIMAL(10, 2) NOT NULL,
     status VARCHAR(255) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (customer_id) REFERENCES restaurant_customers(customer_id),
+    FOREIGN KEY (user_id) REFERENCES users(user_id),
     FOREIGN KEY (restaurant_id) REFERENCES restaurants(restaurant_id)
 );
