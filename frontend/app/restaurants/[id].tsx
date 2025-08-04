@@ -98,9 +98,9 @@ export default function RestaurantDetails() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#fff" },
+  container: { flex: 1, backgroundColor: "#fff", marginTop:25},
   imageWrapper: { position: "relative" },
-  image: { width: "100%", height: 220, borderBottomLeftRadius: 24, borderBottomRightRadius: 24 },
+  image: { width: "100%", height: 220, borderBottomLeftRadius: 24, borderBottomRightRadius: 24, marginTop: 9 },
   topLeftIcon: { position: "absolute", top: 30, left: 18, backgroundColor: "#0007", borderRadius: 20, padding: 4 },
   topRightIcon: { position: "absolute", top: 30, right: 18, backgroundColor: "#0007", borderRadius: 20, padding: 4 },
   infoSection: { padding: 18, paddingBottom: 0 },
