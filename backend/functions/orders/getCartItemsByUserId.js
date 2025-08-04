@@ -1,5 +1,3 @@
-// functions/cart/getCartItemsByUserId.js
-
 const pool = require('../../database/database');
 
 const getCartItemsByUserId = async (req, res) => {
@@ -10,6 +8,7 @@ const getCartItemsByUserId = async (req, res) => {
       SELECT 
         oi.order_item_id,
         oi.quantity,
+        oi.note,
         mi.menu_item_id,
         mi.name AS item_name,
         mi.price,
