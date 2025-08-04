@@ -98,6 +98,15 @@ const getRatingsByRestaurantId = require('./functions/restaurant_ratings/getRati
 app.get('/restaurants/:restaurantId/ratings', loggin, getRatingsByRestaurantId);
 
 
+//Order API handlers and routes
+const addItemsToCart = require('./functions/cart/addItemsToCart');
+const getCartItemsByUserId = require('./functions/cart/getCartItemsByUserId');
+
+app.post('/cart/add', loggin, addItemsToCart);
+app.get('/cart/:userId', loggin, getCartItemsByUserId);
+
+
+
 // Start the Server
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
