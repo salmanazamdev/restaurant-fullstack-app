@@ -87,16 +87,16 @@ export default function MenuItemDetails() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#fff" },
+  container: { flex: 1, backgroundColor: "#fff", marginTop:25 },
   imageWrapper: { position: "relative" },
-  image: { width: "100%", height: 220, borderBottomLeftRadius: 24, borderBottomRightRadius: 24 },
+  image: { width: "100%", height: 280, borderBottomLeftRadius: 24, borderBottomRightRadius: 24 },
   topLeftIcon: { position: "absolute", top: 30, left: 18, backgroundColor: "#0007", borderRadius: 20, padding: 4 },
   topRightIcon: { position: "absolute", top: 30, right: 18, backgroundColor: "#0007", borderRadius: 20, padding: 4 },
   infoSection: { padding: 18, paddingBottom: 0 },
   title: { fontSize: 26, fontWeight: "bold", marginBottom: 10, color: "#222" },
   desc: { fontSize: 15, color: "#444", marginBottom: 18 },
   quantityRow: { flexDirection: "row", alignItems: "center", justifyContent: "center", marginVertical: 18 },
-  qtyBtn: { backgroundColor: "#f2f2f2", borderRadius: 8, padding: 8, marginHorizontal: 12 },
+  qtyBtn: { backgroundColor: "#f2f2f2", borderRadius: 8, padding: 8, marginHorizontal: 28 },
   qtyText: { fontSize: 20, fontWeight: "bold", color: "#222" },
   noteInput: {
     backgroundColor: "#f2f2f2",
