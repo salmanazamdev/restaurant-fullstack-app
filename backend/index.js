@@ -99,11 +99,11 @@ app.get('/restaurants/:restaurantId/ratings', loggin, getRatingsByRestaurantId);
 
 
 //Order API handlers and routes
-const addItemsToCart = require('./functions/cart/addItemsToCart');
-const getCartItemsByUserId = require('./functions/cart/getCartItemsByUserId');
+const addItemsToCart = require('./functions/orders/addItemsToCart');
+const getCartItemsByUserId = require('./functions/orders/getCartItemsByUserId');
 
 app.post('/cart/add', loggin, addItemsToCart);
-app.get('/cart/:userId', loggin, getCartItemsByUserId);
+app.get('/cart/user/:userId', loggin, getCartItemsByUserId);
 
 
 
