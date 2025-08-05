@@ -100,12 +100,14 @@ CREATE TABLE IF NOT EXISTS cart_items (
     menu_item_id INT NOT NULL,
     restaurant_id INT NOT NULL,
     quantity INT NOT NULL DEFAULT 1,
-    price DECIMAL (10,2),
+    price DECIMAL(10, 2) NOT NULL,
     note TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(user_id),
     FOREIGN KEY (menu_item_id) REFERENCES menu_items(item_id),
+    FOREIGN KEY (price) REFERENCES menu_items(price),
     FOREIGN KEY (restaurant_id) REFERENCES restaurants(restaurant_id)
+
 );
 
 -- Order items table
