@@ -332,4 +332,4 @@ INSERT INTO restaurant_customers (restaurant_id, name, email, phone) VALUES
 INSERT INTO orders (user_id, restaurant_id, total_amount, status) VALUES
 (1, 1, 8.48, 'Completed'),
 (2, 2, 21.49, 'Pending'),
-(3, 3, 13.74, 'Preparing');
+(2, 3, 13.74, 'Preparing');
