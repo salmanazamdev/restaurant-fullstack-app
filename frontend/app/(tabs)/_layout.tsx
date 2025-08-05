@@ -8,6 +8,8 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import Feather from '@expo/vector-icons/Feather';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+
 
 import { HapticTab } from '@/components/HapticTab';
 import { IconSymbol } from '@/components/ui/IconSymbol';
@@ -43,7 +45,7 @@ export default function TabLayout() {
         name="orders"
         options={{
           title: 'Orders',
-          tabBarIcon: ({ color }) => <Feather name="shopping-cart" size={24} color="lightgray" />,
+          tabBarIcon: ({ color }) => <MaterialIcons name="shopping-cart-checkout" size={24} color="lightgray" />,
         }}
       />
 
@@ -59,7 +61,7 @@ export default function TabLayout() {
         name="ewallet"
         options={{
           title: 'E-Wallet',
-          tabBarIcon: ({ color }) => <Ionicons name="wallet-outline" size={24} color="#ddd" />,
+          tabBarIcon: ({ color }) => <Ionicons name="wallet-outline" size={24} color="lightgray" />,
         }}
       />
 
