@@ -3,6 +3,7 @@ import {View, Text, StyleSheet, Image, ScrollView, TextInput, TouchableOpacity} 
 import axios from "axios";
 import { IP_ADDRESS } from "@/constants/endpoint";
 import { useRouter } from "expo-router";
+import { Ionicons } from '@expo/vector-icons';
 
 export default function Home() {
   const router = useRouter();
@@ -31,7 +32,15 @@ export default function Home() {
             <Text style={styles.locationText}>Blue Area, Islamabad</Text>
           </View>
         </View>
+
+        <TouchableOpacity
+          style={styles.cartIcon}
+          onPress={() => router.push("/cart")} 
+        >
+          <Ionicons name="cart-outline" size={26} color="#000" />
+        </TouchableOpacity>
       </View>
+
 
 
       <View style={styles.searchContainer}>
@@ -77,6 +86,14 @@ const styles = StyleSheet.create({
   },
   topBar: {
     marginBottom: 20,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  cartIcon: {
+    backgroundColor: "#f2f2f2",
+    padding: 8,
+    borderRadius: 20,
   },
   locationWrapper: {
     flexDirection: "row",
