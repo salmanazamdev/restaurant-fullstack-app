@@ -37,7 +37,7 @@ export default function Home() {
           style={styles.cartIcon}
           onPress={() => router.push("/cart")} 
         >
-          <Ionicons name="cart-outline" size={26} color="#000" />
+          <Ionicons name="cart-outline" size={26} color="gray" />
         </TouchableOpacity>
       </View>
 
