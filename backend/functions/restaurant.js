@@ -2,12 +2,12 @@ const pool = require('../database/database');
 
 // Create a new restaurant
 const createRestaurant = async (req, res) => {
-    const { name, address, phone, email } = req.body;
+    const { name, address, phone, email, category } = req.body;
 
     try {
         const result = await pool.query(
-            'INSERT INTO restaurants (name, address, phone, email) VALUES ($1, $2, $3, $4) RETURNING *',
-            [name, address, phone, email]
+            'INSERT INTO restaurants (restaurant_name, address, phone, email, category_id) VALUES ($1, $2, $3, $4, $5) RETURNING *',
+            [name, address, phone, email, category]
         );
         res.status(201).json(result.rows[0]);
     } catch (err) {
@@ -28,12 +28,12 @@ const getRestaurants = async (req, res) => {
 // Update a restaurant by ID
 const updateRestaurant = async (req, res) => {
     const id = req.params.id;
-    const { name, address, phone, email } = req.body;
+    const { name, address, phone, email, category } = req.body;
 
     try {
         const result = await pool.query(
-            'UPDATE restaurants SET name = $1, address = $2, phone = $3, email = $4, updated_at = CURRENT_TIMESTAMP WHERE restaurant_id = $5 RETURNING *',
-            [name, address, phone, email, id]
+            'UPDATE restaurants SET restaurant_name = $1, address = $2, phone = $3, email = $4, category_id = $5, updated_at = CURRENT_TIMESTAMP WHERE restaurant_id = $6 RETURNING *',
+            [name, address, phone, email, category, id]
         );
 
         if (result.rowCount === 0) {
