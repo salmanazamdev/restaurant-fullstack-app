@@ -9,17 +9,19 @@ const getCartItemsByUserId = async (req, res) => {
         ci.cart_item_id,
         ci.quantity,
         ci.note,
-        mi.item_id,
+        ci.price AS cart_price, -- price at time of adding
+        mi.item_id AS menu_item_id,
         mi.name AS item_name,
-        mi.price,
-        mi.image_url,
+        mi.image_url AS item_image,
+        mi.price AS current_price,
         r.restaurant_id,
         r.restaurant_name,
-        r.category AS restaurant_category,
-        r.image_url AS restaurant_image
+        r.image_url AS restaurant_image,
+        c.category_name AS restaurant_category
       FROM cart_items ci
       JOIN menu_items mi ON ci.menu_item_id = mi.item_id
       JOIN restaurants r ON mi.restaurant_id = r.restaurant_id
+      JOIN categories c ON r.category_id = c.category_id
       WHERE ci.user_id = $1
     `, [userId]);
 
