@@ -1,6 +1,6 @@
 # 🍛 Khaana Express – Full-Stack Restaurant App
 
-Khaana Express is a full-stack food ordering and restaurant management platform. It features a secure and scalable backend built with Node.js, Express, and PostgreSQL (Dockerized), and a modern mobile frontend using React Native (Expo Router).
+Khaana Express app is a full-stack food delivery/ordering and restaurant management platform. It features a secure and scalable backend built with Node.js, Express, and PostgreSQL (Dockerized), and a modern mobile frontend using React Native (Expo Router).
 
 ---
 
