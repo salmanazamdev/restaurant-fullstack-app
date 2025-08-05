@@ -100,6 +100,7 @@ CREATE TABLE IF NOT EXISTS cart_items (
     menu_item_id INT NOT NULL,
     restaurant_id INT NOT NULL,
     quantity INT NOT NULL DEFAULT 1,
+    price DECIMAL (10,2),
     note TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(user_id),

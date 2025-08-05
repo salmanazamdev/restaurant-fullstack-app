@@ -2,6 +2,7 @@ import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image } from "reac
 import { useState } from "react";
 import { router } from "expo-router";
 import axios from "axios";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { IP_ADDRESS } from "@/constants/endpoint";
 
 export default function LoginAfterSignup() {
@@ -24,6 +25,7 @@ export default function LoginAfterSignup() {
 
 
       if (response.status === 200) {
+        await AsyncStorage.setItem('userId', response.data.userId.toString());
         alert("Login successful!");
 
         router.push("/(tabs)"); 
