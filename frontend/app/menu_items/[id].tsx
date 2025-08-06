@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView, TextInput } from "react-native";
+import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView, TextInput, Alert } from "react-native";
 import axios from "axios";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { IP_ADDRESS } from "@/constants/endpoint";
-
 import { Ionicons } from "@expo/vector-icons";
 
 export default function MenuItemDetails() {
@@ -23,6 +22,27 @@ export default function MenuItemDetails() {
       setItem(response.data);
     } catch (error) {
       console.log("Error fetching menu item:", error);
+    }
+  };
+
+  const handleAddToCart = async () => {
+    const cartItemPayload = {
+      user_id: 1, // replace with real user ID
+      menu_item_id: item.item_id,
+      restaurant_id: item.restaurant_id,
+      quantity: quantity,
+      price: item.price,
+      total_price: (item.price * quantity).toFixed(2),
+      note: note,
+    };
+
+    try {
+      await axios.post(`${IP_ADDRESS}/cart`, cartItemPayload);
+      Alert.alert("Success", `${quantity}x ${item.name} added to your cart!`);
+    } catch (error) {
+      console.log("Error adding item to cart:", error.response?.data || error);
+      const errorMessage = error.response?.data?.message || "Could not add item to cart. Please try again.";
+      Alert.alert("Error", errorMessage);
     }
   };
 
@@ -76,7 +96,7 @@ export default function MenuItemDetails() {
 
       <TouchableOpacity
         style={styles.greenBtn}
-onPress={() => router.push(`/cart/${id}?qty=${quantity}&note=${encodeURIComponent(note)}`)}
+        onPress={handleAddToCart}
       >
         <Text style={styles.greenBtnText}>
           Add to Cart - ${ (item.price * quantity).toFixed(2) }
@@ -87,9 +107,9 @@ onPress={() => router.push(`/cart/${id}?qty=${quantity}&note=${encodeURIComponen
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#fff", marginTop:25 },
+  container: { flex: 1, backgroundColor: "#fff", marginTop: 25 },
   imageWrapper: { position: "relative" },
-  image: { width: "100%", height: 280, borderBottomLeftRadius: 24, borderBottomRightRadius: 24, marginTop:9 },
+  image: { width: "100%", height: 280, borderBottomLeftRadius: 24, borderBottomRightRadius: 24, marginTop: 9 },
   topLeftIcon: { position: "absolute", top: 30, left: 18, backgroundColor: "#0007", borderRadius: 20, padding: 4 },
   topRightIcon: { position: "absolute", top: 30, right: 18, backgroundColor: "#0007", borderRadius: 20, padding: 4 },
   infoSection: { padding: 18, paddingBottom: 0 },
