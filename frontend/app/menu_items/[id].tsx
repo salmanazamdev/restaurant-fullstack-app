@@ -26,25 +26,23 @@ export default function MenuItemDetails() {
   };
 
   const handleAddToCart = async () => {
-    const cartItemPayload = {
-      user_id: 3, // the one we created during signup, only as per my logic
-      menu_item_id: item.item_id,
-      restaurant_id: item.restaurant_id,
-      quantity: quantity,
-      price: item.price,
-      total_price: (item.price * quantity).toFixed(2),
-      note: note,
-    };
-
-    try {
-      await axios.post(`${IP_ADDRESS}/cart`, cartItemPayload);
-      Alert.alert("Success", `${quantity}x ${item.name} added to your cart!`);
-    } catch (error) {
-      console.log("Error adding item to cart:", error.response?.data || error);
-      const errorMessage = error.response?.data?.message || "Could not add item to cart. Please try again.";
-      Alert.alert("Error", errorMessage);
-    }
+  const cartItemPayload = {
+    userId: 3, // as per my logic cuz the resitered user is user3
+    menuItemId: item.item_id,
+    restaurantId: item.restaurant_id,
+    quantity: quantity,
+    note: note,
   };
+
+  try {
+    await axios.post(`${IP_ADDRESS}/cart`, cartItemPayload);
+    Alert.alert("Success", `${quantity}x ${item.name} added to your cart!`);
+  } catch (error) {
+    console.log("Error adding item to cart:", error.response?.data || error);
+    const errorMessage = error.response?.data?.message || "Could not add item to cart. Please try again.";
+    Alert.alert("Error", errorMessage);
+  }
+};
 
   if (!item) {
     return (
