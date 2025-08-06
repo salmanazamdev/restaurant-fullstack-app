@@ -35,7 +35,7 @@ export default function Home() {
 
         <TouchableOpacity
           style={styles.cartIcon}
-          onPress={() => router.push("/cart/2")} 
+          onPress={() => router.push("/cart/3")} 
         >
           <Ionicons name="cart-outline" size={26} color="gray" />
         </TouchableOpacity>
