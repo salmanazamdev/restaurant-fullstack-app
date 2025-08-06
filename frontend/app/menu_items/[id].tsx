@@ -27,7 +27,7 @@ export default function MenuItemDetails() {
 
   const handleAddToCart = async () => {
     const cartItemPayload = {
-      user_id: 1, // replace with real user ID
+      user_id: 3, // the one we created during signup, only as per my logic
       menu_item_id: item.item_id,
       restaurant_id: item.restaurant_id,
       quantity: quantity,
