@@ -9,7 +9,8 @@ const getCartItemsByUserId = async (req, res) => {
         ci.cart_item_id,
         ci.quantity,
         ci.note,
-        ci.price AS cart_price, -- price at time of adding
+        ci.price,
+        ci.total_price,
         mi.item_id AS menu_item_id,
         mi.name AS item_name,
         mi.image_url AS item_image,

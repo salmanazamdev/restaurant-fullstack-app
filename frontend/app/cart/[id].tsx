@@ -27,7 +27,7 @@ export default function CartScreen() {
       <Text>Restaurant: {item.restaurant_name}</Text>
       <Text>Quantity: {item.quantity}</Text>
       <Text>Note: {item.note || "None"}</Text>
-      <Text>Price: ${item.price}</Text>
+      <Text>Total Price: ${item.total_price}</Text>
     </View>
   );
 
