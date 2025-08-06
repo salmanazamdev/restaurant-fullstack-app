@@ -76,7 +76,7 @@ export default function MenuItemDetails() {
 
       <TouchableOpacity
         style={styles.greenBtn}
-        onPress={() => router.push(`/cart?itemId=${id}&qty=${quantity}&note=${encodeURIComponent(note)}`)}
+onPress={() => router.push(`/cart/${id}?qty=${quantity}&note=${encodeURIComponent(note)}`)}
       >
         <Text style={styles.greenBtnText}>
           Add to Cart - ${ (item.price * quantity).toFixed(2) }

@@ -4,8 +4,8 @@ import { useLocalSearchParams } from "expo-router";
 import axios from "axios";
 import { IP_ADDRESS } from "@/constants/endpoint";
 
-export default function CartItemsScreen() {
-  const { id } = useLocalSearchParams(); // this id is userId
+export default function CartScreen() {
+  const { id, qty, note } = useLocalSearchParams();
   const [items, setItems] = useState([]);
 
   useEffect(() => {
