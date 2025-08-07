@@ -100,6 +100,16 @@ export default function MenuItemDetails() {
           Add to Cart - ${ (item.price * quantity).toFixed(2) }
         </Text>
       </TouchableOpacity>
+
+      <TouchableOpacity
+        style={styles.checkBtn}
+      onPress={() => router.push("/cart/3")} 
+      >
+        <Text style={styles.checkBtnText}>
+          Checkout your cart
+        </Text>
+      </TouchableOpacity>
+
     </ScrollView>
   );
 }
@@ -134,4 +144,15 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
   greenBtnText: { color: "#fff", fontWeight: "bold", fontSize: 18 },
+
+    checkBtn: {
+    backgroundColor: "#e1f1e9cc",
+    padding: 5,
+    marginTop:9,
+    borderRadius:20,
+    alignItems: "center",
+    marginHorizontal: 90,
+    marginBottom: 30,
+  },
+  checkBtnText: { color: "black", fontSize: 15 },
 });
