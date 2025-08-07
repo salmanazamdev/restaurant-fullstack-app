@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { View, Text, FlatList, StyleSheet } from "react-native";
+import { View, Text, FlatList, StyleSheet, Image } from "react-native";
 import { useLocalSearchParams } from "expo-router";
 import axios from "axios";
 import { IP_ADDRESS } from "@/constants/endpoint";
 
 export default function CartScreen() {
-  const { id, qty, note } = useLocalSearchParams();
+  const { id } = useLocalSearchParams(); // removed unused `qty`, `note`
   const [items, setItems] = useState([]);
 
   useEffect(() => {
@@ -22,12 +22,18 @@ export default function CartScreen() {
   };
 
   const renderItem = ({ item }) => (
-    <View style={styles.card}>
-      <Text style={styles.title}>{item.item_name}</Text>
-      <Text>Restaurant: {item.restaurant_name}</Text>
-      <Text>Quantity: {item.quantity}</Text>
-      <Text>Note: {item.note || "None"}</Text>
-      <Text>Total Price: ${item.total_price}</Text>
+    <View style={styles.cartbox}>
+
+      <View style={styles.card}>
+        <Text style={styles.title}>{item.item_name}</Text>
+        <Text>Restaurant: {item.restaurant_name}</Text>
+        <Text>Quantity: {item.quantity}</Text>
+        <Text>Note: {item.note || "None"}</Text>
+        <Text>Total Price: ${item.total_price}</Text>
+      </View>
+
+      <Image source={{ uri: item.item_image }} style={styles.image} />
+
     </View>
   );
 
@@ -45,15 +51,43 @@ export default function CartScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 16, backgroundColor: "#fff" },
-  heading: { fontSize: 22, fontWeight: "bold", marginBottom: 12 },
-  card: {
-    padding: 14,
+  container: {
+    flex: 1,
+    padding: 16,
+    backgroundColor: "#fff",
+    marginTop: 20
+  },
+  heading: {
+    fontSize: 22,
+    fontWeight: "bold",
+    marginBottom: 12,
+  },
+
+  cartbox: {
+    flexDirection: "row",
+    alignItems: "flex-start",
+    marginBottom: 14,
+    backgroundColor: "#f9f9f9",
+    borderRadius: 8,
+    padding: 10,
     borderWidth: 1,
     borderColor: "#ddd",
-    borderRadius: 8,
-    marginBottom: 12,
-    backgroundColor: "#f9f9f9",
   },
-  title: { fontSize: 18, fontWeight: "bold" },
+
+  image: {
+    width: 90,
+    height: 90,
+    borderRadius: 8,
+    marginRight: 14,
+  },
+
+  card: {
+    flex: 1,
+  },
+
+  title: {
+    fontSize: 18,
+    fontWeight: "bold",
+    marginBottom: 6,
+  },
 });
