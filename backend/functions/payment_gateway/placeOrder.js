@@ -19,8 +19,8 @@ const placeOrder = async (req, res) => {
 
     // Insert into orders table
     const [orderResult] = await pool.query(
-      `INSERT INTO orders (user_id, address_id, payment_method, total_amount, order_date, status)
-       VALUES (?, ?, ?, ?, NOW(), 'Pending')`,
+      `INSERT INTO orders (user_id, address_id, payment_method, total_amount, status)
+       VALUES (?, ?, ?, ?, 'Pending')`,
       [userId, addressId, paymentMethod, totalAmount]
     );
 
@@ -36,7 +36,7 @@ const placeOrder = async (req, res) => {
           item.item_id,
           item.quantity,
           item.price,
-          item.price * item.quantity // total price for that item
+          item.price * item.quantity 
         ]
       );
     }

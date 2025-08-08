@@ -131,20 +131,23 @@ CREATE TABLE IF NOT EXISTS order_items (
     order_id INT NOT NULL,
     item_id INT NOT NULL,
     quantity INT NOT NULL,
+    price DECIMAL(10,2) NOT NULL,        
+    total_price DECIMAL(10,2) NOT NULL,  
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (order_id) REFERENCES orders(order_id),
     FOREIGN KEY (item_id) REFERENCES menu_items(item_id)
-); 
-
--- Payment details table
-CREATE TABLE IF NOT EXISTS payment_details (
-    payment_id SERIAL PRIMARY KEY,
-    user_id INT NOT NULL,
-    order_id INT NOT NULL,
-    payment_method VARCHAR(100) NOT NULL,
-    payment_status VARCHAR(50) NOT NULL DEFAULT 'pending',
-    paid_at TIMESTAMP DEFAULT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES users(user_id),
-    FOREIGN KEY (order_id) REFERENCES orders(order_id)
 );
+
+
+-- -- Payment details table
+-- CREATE TABLE IF NOT EXISTS payment_details (
+--     payment_id SERIAL PRIMARY KEY,
+--     user_id INT NOT NULL,
+--     order_id INT NOT NULL,
+--     payment_method VARCHAR(100) NOT NULL,
+--     payment_status VARCHAR(50) NOT NULL DEFAULT 'pending',
+--     paid_at TIMESTAMP DEFAULT NULL,
+--     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+--     FOREIGN KEY (user_id) REFERENCES users(user_id),
+--     FOREIGN KEY (order_id) REFERENCES orders(order_id)
+-- );
