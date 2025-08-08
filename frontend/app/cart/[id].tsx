@@ -3,6 +3,7 @@ import { View, Text, FlatList, StyleSheet, Image, TouchableOpacity } from "react
 import { useLocalSearchParams, router } from "expo-router";
 import axios from "axios";
 import { IP_ADDRESS } from "@/constants/endpoint";
+import { Ionicons } from "@expo/vector-icons";
 
 export default function CartScreen() {
   const { id } = useLocalSearchParams();
@@ -36,7 +37,17 @@ export default function CartScreen() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.heading}>Your Cart</Text>
+
+      <View style={styles.titleRow}>
+
+        <TouchableOpacity onPress={() => router.back()} style={styles.iconBtn}>
+          <Ionicons name="arrow-back" size={24} color="#010d06ff" />
+        </TouchableOpacity>
+
+        <Text style={styles.heading}>Your Cart</Text>
+
+      </View>
+      
 
       <FlatList
         data={items}
@@ -64,11 +75,21 @@ const styles = StyleSheet.create({
     padding: 16,
     backgroundColor: "#fff",
   },
-  heading: {
-    fontSize: 22,
-    fontWeight: "bold",
+
+  titleRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginTop: 30,
     marginBottom: 12,
   },
+
+  iconBtn: {
+    marginRight: 8,
+    padding: 4,
+  },
+
+  heading: { fontSize: 22, fontWeight: "bold" },
+
   cartbox: {
     flexDirection: "row",
     alignItems: "center",
@@ -76,12 +97,12 @@ const styles = StyleSheet.create({
     backgroundColor: "#f9f9f9",
     borderRadius: 8,
     padding: 10,
-    borderWidth: 1,
+    borderWidth: 2,
     borderColor: "#ddd",
   },
   image: {
     width: 90,
-    height: 90,
+    height: 110,
     borderRadius: 8,
     marginRight: 14,
   },
@@ -103,7 +124,7 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
     paddingHorizontal: 20,
     marginTop: 10,
-    marginBottom: 20,
+    marginBottom: 25,
   },
   checkoutText: {
     color: "white",
