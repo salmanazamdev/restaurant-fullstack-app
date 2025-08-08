@@ -96,7 +96,7 @@ CREATE TABLE IF NOT EXISTS orders (
     restaurant_id INT NOT NULL,
     address_id INT NOT NULL, 
     total_amount DECIMAL(10, 2) NOT NULL,
-    delivery_fee DECIMAL(10, 2) DEFAULT 150, 
+    delivery_fee DECIMAL(10, 2) DEFAULT 5, 
     payment_method VARCHAR(100) NOT NULL, 
     status VARCHAR(255) NOT NULL DEFAULT 'Pending',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

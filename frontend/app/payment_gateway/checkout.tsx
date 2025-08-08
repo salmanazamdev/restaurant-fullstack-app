@@ -16,7 +16,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { IP_ADDRESS } from "@/constants/endpoint";
 
 const userId = 3; // Temporary until auth is implemented
-const deliveryFee = 150;
+const deliveryFee = 5;
 
 export default function Checkout() {
   const router = useRouter();
@@ -50,7 +50,7 @@ export default function Checkout() {
 
   const removeItem = async (cartItemId: number) => {
     try {
-      await axios.delete(`${IP_ADDRESS}/cart/remove/${cartItemId}`);
+      await axios.delete(`${IP_ADDRESS}/cart/item/${cartItemId}`);
       fetchCartItems();
     } catch (error) {
       console.log("Error removing item:", error);
@@ -131,7 +131,7 @@ export default function Checkout() {
                   Quantity: {item?.quantity || 0}
                 </Text>
                 <Text style={styles.itemPrice}>
-                  Price: ₨{" "}
+                  Price: ${" "}
                   {(
                     (item?.current_price || 0) * (item?.quantity || 0)
                   ).toFixed(2)}
@@ -168,16 +168,16 @@ export default function Checkout() {
         <View style={styles.box}>
           <View style={styles.totalRow}>
             <Text>Subtotal</Text>
-            <Text>₨ {subtotal.toFixed(2)}</Text>
+            <Text>$ {subtotal.toFixed(2)}</Text>
           </View>
           <View style={styles.totalRow}>
             <Text>Delivery Fee</Text>
-            <Text>₨ {deliveryFee.toFixed(2)}</Text>
+            <Text>$ {deliveryFee.toFixed(2)}</Text>
           </View>
           <View style={styles.totalRow}>
             <Text style={{ fontWeight: "bold" }}>Total</Text>
             <Text style={{ fontWeight: "bold" }}>
-              ₨ {(subtotal + deliveryFee).toFixed(2)}
+              $ {(subtotal + deliveryFee).toFixed(2)}
             </Text>
           </View>
         </View>
@@ -197,7 +197,7 @@ export default function Checkout() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#fff" },
+  container: { flex: 1, backgroundColor: "#fff", },
   center: { flex: 1, justifyContent: "center", alignItems: "center" },
   header: {
     flexDirection: "row",
@@ -268,6 +268,8 @@ const styles = StyleSheet.create({
     padding: 15,
     borderRadius: 15,
     alignItems: "center",
+    marginBottom: 35,
+    marginTop: 3
   },
   placeOrderText: { color: "white", fontWeight: "bold", fontSize: 16 },
 });
