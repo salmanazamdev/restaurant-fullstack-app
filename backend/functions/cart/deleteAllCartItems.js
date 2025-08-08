@@ -1,10 +1,10 @@
 const pool = require('../../database/database');
 
-module.exports = async (req, res) => {
+const deleteAllCartItemsByUserId = async (req, res) => {
   try {
     const { userId } = req.params;
 
-    await db.query('DELETE FROM cart WHERE user_id = ?', [userId]);
+    await pool.query('DELETE FROM cart WHERE user_id = ?', [userId]);
 
     res.status(200).json({ message: "All cart items deleted successfully" });
   } catch (error) {
@@ -12,3 +12,5 @@ module.exports = async (req, res) => {
     res.status(500).json({ error: "Failed to delete cart items" });
   }
 };
+
+module.exports = deleteAllCartItemsByUserId;
