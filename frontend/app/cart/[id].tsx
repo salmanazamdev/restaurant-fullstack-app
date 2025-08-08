@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { View, Text, FlatList, StyleSheet, Image, TouchableOpacity } from "react-native";
+import { View, Text, FlatList, StyleSheet, Image, TouchableOpacity, Alert } from "react-native";
 import { useLocalSearchParams, router } from "expo-router";
 import axios from "axios";
 import { IP_ADDRESS } from "@/constants/endpoint";
@@ -16,10 +16,32 @@ export default function CartScreen() {
   const fetchCartItems = async () => {
     try {
       const response = await axios.get(`${IP_ADDRESS}/cart/${id}`);
-      setItems(response.data.cartItems);
+      setItems(response.data.cartItems || []);
     } catch (error) {
       console.error("Failed to load cart items:", error);
     }
+  };
+
+  const clearCart = async () => {
+    Alert.alert(
+      "Clear Cart",
+      "Are you sure you want to remove all items from your cart?",
+      [
+        { text: "Cancel", style: "cancel" },
+        {
+          text: "Yes, Clear",
+          style: "destructive",
+          onPress: async () => {
+            try {
+              await axios.delete(`${IP_ADDRESS}/cart/${id}`);
+              setItems([]);
+            } catch (error) {
+              console.error("Failed to clear cart:", error);
+            }
+          },
+        },
+      ]
+    );
   };
 
   const renderItem = ({ item }) => (
@@ -39,15 +61,18 @@ export default function CartScreen() {
     <View style={styles.container}>
 
       <View style={styles.titleRow}>
-
         <TouchableOpacity onPress={() => router.back()} style={styles.iconBtn}>
           <Ionicons name="arrow-back" size={24} color="#010d06ff" />
         </TouchableOpacity>
 
         <Text style={styles.heading}>Your Cart</Text>
 
+        {items.length > 0 && (
+          <TouchableOpacity onPress={clearCart} style={styles.clearBtn}>
+            <Ionicons name="trash" size={22} color="white" />
+          </TouchableOpacity>
+        )}
       </View>
-      
 
       <FlatList
         data={items}
@@ -70,25 +95,22 @@ export default function CartScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 16,
-    backgroundColor: "#fff",
-  },
+  container: { flex: 1, padding: 16, backgroundColor: "#fff" },
 
   titleRow: {
     flexDirection: "row",
     alignItems: "center",
     marginTop: 30,
     marginBottom: 12,
+    justifyContent: "space-between",
   },
-
-  iconBtn: {
-    marginRight: 8,
-    padding: 4,
-  },
-
+  iconBtn: { padding: 4 },
   heading: { fontSize: 22, fontWeight: "bold" },
+  clearBtn: {
+    backgroundColor: "red",
+    padding: 8,
+    borderRadius: 8,
+  },
 
   cartbox: {
     flexDirection: "row",
@@ -100,24 +122,11 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: "#ddd",
   },
-  image: {
-    width: 90,
-    height: 110,
-    borderRadius: 8,
-    marginRight: 14,
-  },
-  card: {
-    flex: 1,
-  },
-  title: {
-    fontSize: 18,
-    fontWeight: "bold",
-    marginBottom: 4,
-  },
-  text: {
-    fontSize: 14,
-    marginBottom: 2,
-  },
+  image: { width: 90, height: 110, borderRadius: 8, marginRight: 14 },
+  card: { flex: 1 },
+  title: { fontSize: 18, fontWeight: "bold", marginBottom: 4 },
+  text: { fontSize: 14, marginBottom: 2 },
+
   checkoutBtn: {
     backgroundColor: "green",
     borderRadius: 15,
@@ -126,10 +135,5 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 25,
   },
-  checkoutText: {
-    color: "white",
-    textAlign: "center",
-    fontSize: 16,
-    fontWeight: "bold",
-  },
+  checkoutText: { color: "white", textAlign: "center", fontSize: 16, fontWeight: "bold" },
 });
