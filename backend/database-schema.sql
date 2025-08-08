@@ -9,6 +9,17 @@ CREATE TABLE users (
     deleted_at TIMESTAMP DEFAULT NULL
 );
 
+-- User Addresses table
+CREATE TABLE IF NOT EXISTS user_addresses (
+    address_id SERIAL PRIMARY KEY,
+    user_id INT NOT NULL,
+    address TEXT NOT NULL,
+    country VARCHAR(100) DEFAULT 'Pakistan',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
 CREATE TABLE IF NOT EXISTS user_favorites (
     favorite_id SERIAL PRIMARY KEY,
     user_id INT NOT NULL,
