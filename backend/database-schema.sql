@@ -125,16 +125,16 @@ CREATE TABLE IF NOT EXISTS cart_items (
 );
 
 
--- -- Order items table
--- CREATE TABLE IF NOT EXISTS order_items (
---     order_item_id SERIAL PRIMARY KEY,
---     order_id INT NOT NULL,
---     item_id INT NOT NULL,
---     quantity INT NOT NULL,
---     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
---     FOREIGN KEY (order_id) REFERENCES orders(order_id),
---     FOREIGN KEY (item_id) REFERENCES menu_items(item_id)
--- ); Isn't required rn
+-- Order items table
+CREATE TABLE IF NOT EXISTS order_items (
+    order_item_id SERIAL PRIMARY KEY,
+    order_id INT NOT NULL,
+    item_id INT NOT NULL,
+    quantity INT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (order_id) REFERENCES orders(order_id),
+    FOREIGN KEY (item_id) REFERENCES menu_items(item_id)
+); 
 
 -- Payment details table
 CREATE TABLE IF NOT EXISTS payment_details (
