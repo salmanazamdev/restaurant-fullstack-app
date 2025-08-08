@@ -7,12 +7,16 @@ import {
   TouchableOpacity,
   StyleSheet,
   ActivityIndicator,
+  Alert,
+  ScrollView,
 } from "react-native";
 import axios from "axios";
 import { useRouter } from "expo-router";
+import { Ionicons } from "@expo/vector-icons";
 import { IP_ADDRESS } from "@/constants/endpoint";
 
-const userId = 1; // Temporary until auth is implemented
+const userId = 3; // Temporary until auth is implemented
+const deliveryFee = 150;
 
 export default function Checkout() {
   const router = useRouter();
@@ -24,7 +28,6 @@ export default function Checkout() {
     try {
       setLoading(true);
       const res = await axios.get(`${IP_ADDRESS}/cart/${userId}`);
-
       const items = Array.isArray(res.data?.cartItems)
         ? res.data.cartItems
         : [];
@@ -58,6 +61,14 @@ export default function Checkout() {
     fetchCartItems();
   }, []);
 
+  const handleProceedToPayment = () => {
+    if (!cartItems.length) {
+      Alert.alert("Cart Empty", "Please add items before proceeding.");
+      return;
+    }
+    router.push("/payment_gateway/confirm_payment");
+  };
+
   if (loading) {
     return (
       <View style={styles.center}>
@@ -76,59 +87,109 @@ export default function Checkout() {
 
   return (
     <View style={styles.container}>
-      {/* Address Section */}
-      <TouchableOpacity
-        style={styles.addressBox}
-        onPress={() => router.push("/payment_gateway/address")}
-      >
-        <View style={{ flex: 1 }}>
-          <Text style={styles.addressLabel}>Deliver to</Text>
-          <Text style={styles.addressText}>
-            Select your delivery address
-          </Text>
-        </View>
-        <Text style={styles.changeText}>Change</Text>
-      </TouchableOpacity>
-
-      {/* Cart Items */}
-      <FlatList
-        data={cartItems}
-        keyExtractor={(item, index) =>
-          item?.cart_item_id ? String(item.cart_item_id) : String(index)
-        }
-        renderItem={({ item }) => (
-          <View style={styles.itemContainer}>
-            {item?.item_image ? (
-              <Image source={{ uri: item.item_image }} style={styles.image} />
-            ) : null}
-            <View style={styles.info}>
-              <Text style={styles.name}>
-                {item?.item_name || "Unnamed Item"}
-              </Text>
-              <Text style={styles.price}>${item?.current_price || 0}</Text>
-              <Text>Qty: {item?.quantity || 0}</Text>
-              {item?.note ? <Text>Note: {item.note}</Text> : null}
-            </View>
-            <TouchableOpacity
-              onPress={() => removeItem(item?.cart_item_id)}
-            >
-              <Text style={styles.remove}>Remove</Text>
-            </TouchableOpacity>
-          </View>
-        )}
+      {/* Scrollable Content */}
+      <ScrollView
         contentContainerStyle={{ paddingBottom: 100 }}
-      />
+        showsVerticalScrollIndicator={false}
+      >
+        {/* Header */}
+        <View style={styles.header}>
+          <TouchableOpacity onPress={() => router.back()}>
+            <Ionicons name="arrow-back" size={24} />
+          </TouchableOpacity>
+          <Text style={styles.headerTitle}>Checkout</Text>
+        </View>
 
-      {/* Summary & Checkout */}
-      <View style={styles.summary}>
-        <Text style={styles.summaryText}>
-          Subtotal: ${subtotal.toFixed(2)}
-        </Text>
+        {/* Address Section */}
+        <Text style={styles.sectionTitle}>Deliver to</Text>
         <TouchableOpacity
-          style={styles.checkoutBtn}
-          onPress={() => router.push("/payment_gateway/confirm_payment")}
+          style={styles.boxRow}
+          onPress={() => router.push("/payment_gateway/address")}
         >
-          <Text style={styles.checkoutText}>Proceed to Payment</Text>
+          <View style={{ flex: 1 }}>
+            <Text style={styles.addressLabel}>Select your delivery address</Text>
+          </View>
+          <Text style={styles.changeText}>Change</Text>
+        </TouchableOpacity>
+
+        {/* Order Summary */}
+        <Text style={styles.sectionTitle}>Order Summary</Text>
+        <View style={styles.box}>
+          {cartItems.map((item, index) => (
+            <View key={index} style={styles.cartItem}>
+              {item?.item_image ? (
+                <Image
+                  source={{ uri: item.item_image }}
+                  style={styles.itemImage}
+                />
+              ) : null}
+              <View style={styles.itemInfo}>
+                <Text style={styles.itemName}>
+                  {item?.item_name || "Unnamed Item"}
+                </Text>
+                <Text style={styles.itemDetail}>
+                  Quantity: {item?.quantity || 0}
+                </Text>
+                <Text style={styles.itemPrice}>
+                  Price: ₨{" "}
+                  {(
+                    (item?.current_price || 0) * (item?.quantity || 0)
+                  ).toFixed(2)}
+                </Text>
+              </View>
+              <TouchableOpacity onPress={() => removeItem(item?.cart_item_id)}>
+                <Text style={styles.remove}>Remove</Text>
+              </TouchableOpacity>
+            </View>
+          ))}
+        </View>
+
+        {/* Payment Method Section */}
+        <Text style={styles.sectionTitle}>Payment Method</Text>
+        <TouchableOpacity
+          style={styles.boxRow}
+          onPress={() => router.push("/payment_gateway/payment_method")}
+        >
+          <Text style={styles.addressLabel}>Select Payment Method</Text>
+          <Text style={styles.changeText}>Change</Text>
+        </TouchableOpacity>
+
+        {/* Get Discounts Section */}
+        <Text style={styles.sectionTitle}>Get Discounts</Text>
+        <TouchableOpacity
+          style={styles.boxRow}
+          onPress={() => router.push("/payment_gateway/discounts")}
+        >
+          <Text style={styles.addressLabel}>Apply a discount code</Text>
+          <Text style={styles.changeText}>Apply</Text>
+        </TouchableOpacity>
+
+        {/* Total Breakdown */}
+        <View style={styles.box}>
+          <View style={styles.totalRow}>
+            <Text>Subtotal</Text>
+            <Text>₨ {subtotal.toFixed(2)}</Text>
+          </View>
+          <View style={styles.totalRow}>
+            <Text>Delivery Fee</Text>
+            <Text>₨ {deliveryFee.toFixed(2)}</Text>
+          </View>
+          <View style={styles.totalRow}>
+            <Text style={{ fontWeight: "bold" }}>Total</Text>
+            <Text style={{ fontWeight: "bold" }}>
+              ₨ {(subtotal + deliveryFee).toFixed(2)}
+            </Text>
+          </View>
+        </View>
+      </ScrollView>
+
+      {/* Fixed Button at Bottom */}
+      <View style={styles.footer}>
+        <TouchableOpacity
+          style={styles.placeOrderButton}
+          onPress={handleProceedToPayment}
+        >
+          <Text style={styles.placeOrderText}>Proceed to Payment</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -136,64 +197,77 @@ export default function Checkout() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#fff", padding: 10 },
+  container: { flex: 1, backgroundColor: "#fff" },
   center: { flex: 1, justifyContent: "center", alignItems: "center" },
-
-  addressBox: {
+  header: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "#f4f4f4",
-    padding: 12,
+    gap: 10,
+    marginBottom: 20,
+    marginTop: 30,
+    paddingHorizontal: 20,
+  },
+  headerTitle: { fontSize: 24, fontWeight: "bold" },
+  sectionTitle: {
+    fontSize: 18,
+    fontWeight: "bold",
+    marginBottom: 8,
+    marginTop: 20,
+    paddingHorizontal: 20,
+  },
+  box: {
+    backgroundColor: "#f0f0f0",
+    padding: 15,
     borderRadius: 8,
-    marginBottom: 15,
-  },
-  addressLabel: {
-    fontSize: 14,
-    color: "#555",
-  },
-  addressText: {
-    fontSize: 16,
-    fontWeight: "bold",
-    color: "#000",
-  },
-  changeText: {
-    fontSize: 14,
-    fontWeight: "bold",
-    color: "#4CAF50",
-  },
-
-  itemContainer: {
-    flexDirection: "row",
-    backgroundColor: "#f9f9f9",
-    padding: 10,
     marginBottom: 10,
+    marginHorizontal: 20,
+  },
+  boxRow: {
+    backgroundColor: "#f0f0f0",
+    padding: 15,
     borderRadius: 8,
+    marginBottom: 10,
+    marginHorizontal: 20,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+  addressLabel: { fontSize: 16, fontWeight: "500" },
+  changeText: { color: "#4CAF50", fontWeight: "bold" },
+  cartItem: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 10,
+    paddingBottom: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: "#e0e0e0",
+  },
+  itemImage: { width: 60, height: 60, borderRadius: 8, marginRight: 15 },
+  itemInfo: { flex: 1, justifyContent: "center" },
+  itemName: { fontWeight: "bold" },
+  itemDetail: { fontSize: 12, color: "#666" },
+  itemPrice: { fontWeight: "500", marginTop: 4 },
+  remove: { color: "red", fontWeight: "bold", fontSize: 12 },
+  totalRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingVertical: 6,
+  },
+  footer: {
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    right: 0,
+    backgroundColor: "#fff",
+    padding: 10,
+    borderTopWidth: 1,
+    borderTopColor: "#ddd",
+  },
+  placeOrderButton: {
+    backgroundColor: "green",
+    padding: 15,
+    borderRadius: 15,
     alignItems: "center",
   },
-  image: { width: 70, height: 70, borderRadius: 8, marginRight: 10 },
-  info: { flex: 1 },
-  name: { fontWeight: "bold", fontSize: 16 },
-  price: { color: "#888" },
-  remove: { color: "red", fontWeight: "bold" },
-
-  summary: {
-    borderTopWidth: 1,
-    borderTopColor: "#ccc",
-    paddingVertical: 15,
-    paddingHorizontal: 10,
-    backgroundColor: "#fff",
-  },
-  summaryText: { fontSize: 18, fontWeight: "bold" },
-  checkoutBtn: {
-    backgroundColor: "#4CAF50",
-    padding: 14,
-    borderRadius: 8,
-    marginTop: 10,
-  },
-  checkoutText: {
-    color: "#fff",
-    textAlign: "center",
-    fontWeight: "bold",
-    fontSize: 16,
-  },
+  placeOrderText: { color: "white", fontWeight: "bold", fontSize: 16 },
 });
