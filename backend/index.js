@@ -98,12 +98,26 @@ const getRatingsByRestaurantId = require('./functions/restaurant_ratings/getRati
 app.get('/restaurants/:restaurantId/ratings', loggin, getRatingsByRestaurantId);
 
 
-//Order API handlers and routes
+// Cart APIs
 const addItemsToCart = require('./functions/cart/addItemsToCart');
 const getCartItemsByUserId = require('./functions/cart/getCartItemsByUserId');
+const deleteAllCartItemsByUserId = require('./functions/cart/deleteAllCartItemsByUserId');
 
 app.post('/cart', loggin, addItemsToCart);
 app.get('/cart/:userId', loggin, getCartItemsByUserId);
+app.delete('/cart/:userId', loggin, deleteAllCartItemsByUserId);
+
+// Address APIs
+const addAddress = require('./functions/payment_gateway/addAddress');
+const getAddressByUserId = require('./functions/payment_gateway/getAddressByUserId');
+
+app.post('/payment_gateway', loggin, addAddress);
+app.get('/payment_gateway/:userId', loggin, getAddressByUserId);
+
+// Place Order API
+const placeOrder = require('./functions/payment_gateway/placeOrder');
+
+app.post('/payment_gateway', loggin, placeOrder);
 
 
 
