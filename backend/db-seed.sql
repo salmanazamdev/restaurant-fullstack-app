@@ -1,8 +1,15 @@
 -- Users
 INSERT INTO users (username, email, password, address)
 VALUES 
-('salman', 'salman.dev@sample.com', 'hashedpassword1', 'Somewhere on Earth'),
-('essa', 'essa.khan@sample.com', 'hashedpassword2', 'Somewhere on Earth');
+('salman', 'salman.dev@sample.com', 'hashedpassword1'),
+('essa', 'essa.khan@sample.com', 'hashedpassword2');
+
+
+-- User addresses
+INSERT INTO user_addresses (user_id, address)
+VALUES
+(1, 'Street 1, Karachi'),
+(2, 'Block A, Islamabad'),
 
 
 -- Seed Categories
@@ -244,7 +251,7 @@ INSERT INTO menu_items (restaurant_id, name, description, price, image_url) VALU
 (36, 'Sweet Potato Fries', 'Crispy sweet potato fries.', 5.49, 'https://images.pexels.com/photos/1583884/pexels-photo-1583884.jpeg');
 
 
--- Seed Restaurant Ratings
+
 -- Seed Restaurant Ratings
 INSERT INTO restaurant_ratings (restaurant_id, user_id, rating, review) VALUES
 (1, 1, 5, 'Amazing burgers, juicy and flavorful!'),
@@ -328,8 +335,11 @@ INSERT INTO restaurant_customers (restaurant_id, name, email, phone) VALUES
 (2, 'Sara Ahmed', 'sara.ahmed@example.com', '0301-2345678'),
 (3, 'John Doe', 'john.doe@example.com', '0302-3456789');
 
--- Seed Orders
-INSERT INTO orders (user_id, restaurant_id, total_amount, status) VALUES
-(1, 1, 8.48, 'Completed'),
-(2, 2, 21.49, 'Pending'),
-(2, 3, 13.74, 'Preparing');
+-- Seed orders
+INSERT INTO orders (user_id, restaurent_id, address_id, total_amount, delivery_fee, payment_method, status)
+VALUES
+(1, 1, 1, 2500.00, 150.00, 'Cash on Delivery', 'Pending'),
+(2, 3, 2, 1800.00, 150.00, 'Credit Card', 'Confirmed'),
+(2, 2, 3, 950.00, 150.00, 'Easypaisa', 'Completed'),
+(1, 4, 1, 1100.00, 150.00, 'JazzCash', 'Pending'),
+(2, 5, 4, 2890.00, 150.00, 'Cash on Delivery', 'Shipped');
