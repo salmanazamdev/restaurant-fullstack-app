@@ -48,7 +48,6 @@ CREATE TABLE IF NOT EXISTS restaurants (
     category_id INT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-
     image_url VARCHAR(550) DEFAULT NULL,
     FOREIGN KEY (category_id) REFERENCES categories(category_id)
 );
@@ -90,18 +89,24 @@ CREATE TABLE IF NOT EXISTS restaurant_customers (
     FOREIGN KEY (restaurant_id) REFERENCES restaurants(restaurant_id)
 );
 
--- Orders table (linked to user and restaurant)
+-- Orders table (payment data is also stored here)
 CREATE TABLE IF NOT EXISTS orders (
     order_id SERIAL PRIMARY KEY,
     user_id INT NOT NULL,
     restaurant_id INT NOT NULL,
+    address_id INT NOT NULL, 
     total_amount DECIMAL(10, 2) NOT NULL,
-    status VARCHAR(255) NOT NULL,
+    delivery_fee DECIMAL(10, 2) DEFAULT 150, 
+    payment_method VARCHAR(100) NOT NULL, 
+    status VARCHAR(255) NOT NULL DEFAULT 'Pending',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(user_id),
-    FOREIGN KEY (restaurant_id) REFERENCES restaurants(restaurant_id)
+    FOREIGN KEY (restaurant_id) REFERENCES restaurants(restaurant_id),
+    FOREIGN KEY (address_id) REFERENCES user_addresses(address_id)
+
 );
+
 
 -- Cart items table
 CREATE TABLE IF NOT EXISTS cart_items (
@@ -120,16 +125,16 @@ CREATE TABLE IF NOT EXISTS cart_items (
 );
 
 
--- Order items table
-CREATE TABLE IF NOT EXISTS order_items (
-    order_item_id SERIAL PRIMARY KEY,
-    order_id INT NOT NULL,
-    item_id INT NOT NULL,
-    quantity INT NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (order_id) REFERENCES orders(order_id),
-    FOREIGN KEY (item_id) REFERENCES menu_items(item_id)
-);
+-- -- Order items table
+-- CREATE TABLE IF NOT EXISTS order_items (
+--     order_item_id SERIAL PRIMARY KEY,
+--     order_id INT NOT NULL,
+--     item_id INT NOT NULL,
+--     quantity INT NOT NULL,
+--     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+--     FOREIGN KEY (order_id) REFERENCES orders(order_id),
+--     FOREIGN KEY (item_id) REFERENCES menu_items(item_id)
+-- ); Isn't required rn
 
 -- Payment details table
 CREATE TABLE IF NOT EXISTS payment_details (
