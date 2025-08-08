@@ -2,25 +2,27 @@ const pool = require('../../database/database');
 
 const deleteCartItemById = async (req, res) => {
   try {
-    const { cartItemId } = req.params;
-
-    if (!cartItemId) {
-      return res.status(400).json({ error: "Cart item ID is required" });
+    const cartItemId = parseInt(req.params.cartItemId, 10);
+    if (Number.isNaN(cartItemId)) {
+      return res.status(400).json({ error: "Invalid cartItemId" });
     }
 
-    const [result] = await pool.query(
-      'DELETE FROM cart_items WHERE cart_item_id = $1',
+    const result = await pool.query(
+      'DELETE FROM cart_items WHERE cart_item_id = $1 RETURNING *',
       [cartItemId]
     );
 
-    if (result.affectedRows === 0) {
+    if (result.rowCount === 0) {
       return res.status(404).json({ error: "Cart item not found" });
     }
 
-    res.status(200).json({ message: "Cart item deleted successfully" });
+    return res.status(200).json({
+      message: "Cart item deleted successfully",
+      deleted: result.rows[0],
+    });
   } catch (error) {
     console.error("Error deleting cart item:", error);
-    res.status(500).json({ error: "Failed to delete cart item" });
+    return res.status(500).json({ error: "Failed to delete cart item" });
   }
 };
 
