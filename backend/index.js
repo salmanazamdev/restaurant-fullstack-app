@@ -102,10 +102,12 @@ app.get('/restaurants/:restaurantId/ratings', loggin, getRatingsByRestaurantId);
 const addItemsToCart = require('./functions/cart/addItemsToCart');
 const getCartItemsByUserId = require('./functions/cart/getCartItemsByUserId');
 const deleteAllCartItemsByUserId = require('./functions/cart/deleteAllCartItemsByUserId');
+const deleteCartItemById = require('./functions/cart/deleteCartItemById');
 
 app.post('/cart', loggin, addItemsToCart);
 app.get('/cart/:userId', loggin, getCartItemsByUserId);
 app.delete('/cart/:userId', loggin, deleteAllCartItemsByUserId);
+app.delete('/cart/item/:cartItemId', loggin, deleteCartItemById);
 
 // Address APIs
 const addAddress = require('./functions/payment_gateway/addAddress');
