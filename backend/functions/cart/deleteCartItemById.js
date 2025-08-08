@@ -9,7 +9,7 @@ const deleteCartItemById = async (req, res) => {
     }
 
     const [result] = await pool.query(
-      'DELETE FROM cart WHERE cart_item_id = ?',
+      'DELETE FROM cart_items WHERE cart_item_id = $1',
       [cartItemId]
     );
 
