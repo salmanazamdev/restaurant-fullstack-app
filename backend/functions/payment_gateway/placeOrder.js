@@ -1,80 +1,58 @@
 const pool = require('../../database/database');
 
 const placeOrder = async (req, res) => {
-  const { paymentMethod, address, country = 'Pakistan' } = req.body;
-  const userId = req.user?.id;
-
-  if (!paymentMethod || !address) {
-    return res.status(400).json({ error: 'Payment method and address are required' });
-  }
-
-  const client = await pool.connect();
-
   try {
-    await client.query('BEGIN');
+    const { userId, addressId, paymentMethod, items } = req.body;
 
-    // 1. Insert or reuse address
-    const addressResult = await client.query(
-      `INSERT INTO user_addresses (user_id, address, country)
-       VALUES ($1, $2, $3)
-       ON CONFLICT (user_id) DO UPDATE 
-         SET address = EXCLUDED.address, 
-             country = EXCLUDED.country, 
-             updated_at = CURRENT_TIMESTAMP
-       RETURNING address_id`,
-      [userId, address, country]
-    );
-    const addressId = addressResult.rows[0].address_id;
-
-    // 2. Get user's cart
-    const cartResult = await client.query(
-      `SELECT * FROM cart_items WHERE user_id = $1`,
-      [userId]
-    );
-    const cartItems = cartResult.rows;
-
-    if (cartItems.length === 0) {
-      await client.query('ROLLBACK');
-      return res.status(400).json({ error: 'Cart is empty' });
+    if (!userId || !addressId || !paymentMethod || !items || !items.length) {
+      return res.status(400).json({ error: "All order fields are required" });
     }
 
-    const subtotal = cartItems.reduce((acc, item) => acc + Number(item.total_price), 0);
-    const deliveryFee = 150;
-    const total = subtotal + deliveryFee;
+    // Calculate total amount from items
+    let totalAmount = 0;
+    for (const item of items) {
+      if (!item.price || !item.quantity) {
+        return res.status(400).json({ error: "Each item must have price and quantity" });
+      }
+      totalAmount += item.price * item.quantity;
+    }
 
-    // 3. Assume single restaurant
-    const restaurantId = cartItems[0].restaurant_id;
-
-    // 4. Insert order
-    const orderResult = await client.query(
-      `INSERT INTO orders (user_id, restaurant_id, address_id, total_amount, delivery_fee, payment_method)
-       VALUES ($1, $2, $3, $4, $5, $6)
-       RETURNING order_id`,
-      [userId, restaurantId, addressId, total, deliveryFee, paymentMethod]
+    // Insert into orders table
+    const [orderResult] = await pool.query(
+      `INSERT INTO orders (user_id, address_id, payment_method, total_amount, order_date, status)
+       VALUES (?, ?, ?, ?, NOW(), 'Pending')`,
+      [userId, addressId, paymentMethod, totalAmount]
     );
-    const orderId = orderResult.rows[0].order_id;
 
-    // 5. Insert order items (requires order_items table)
-    for (const item of cartItems) {
-      await client.query(
-        `INSERT INTO order_items (order_id, item_id, quantity)
-         VALUES ($1, $2, $3)`,
-        [orderId, item.menu_item_id, item.quantity]
+    const orderId = orderResult.insertId;
+
+    // Insert items into order_items table
+    for (const item of items) {
+      await pool.query(
+        `INSERT INTO order_items (order_id, item_id, quantity, price, total_price)
+         VALUES (?, ?, ?, ?, ?)`,
+        [
+          orderId,
+          item.item_id,
+          item.quantity,
+          item.price,
+          item.price * item.quantity // total price for that item
+        ]
       );
     }
 
-    // 6. Clear cart
-    await client.query(`DELETE FROM cart_items WHERE user_id = $1`, [userId]);
+    // Clear user's cart after placing order
+    await pool.query(`DELETE FROM cart WHERE user_id = ?`, [userId]);
 
-    await client.query('COMMIT');
-    res.status(200).json({ message: 'Order placed successfully', orderId });
+    res.status(201).json({
+      message: "Order placed successfully",
+      orderId,
+      totalAmount
+    });
 
   } catch (error) {
-    await client.query('ROLLBACK');
-    console.error('Order error:', error);
-    res.status(500).json({ error: 'Failed to place order', details: error.message });
-  } finally {
-    client.release();
+    console.error("Error placing order:", error);
+    res.status(500).json({ error: "Failed to place order" });
   }
 };
 
