@@ -87,12 +87,11 @@ export default function Checkout() {
 
   return (
     <View style={styles.container}>
-      {/* Scrollable Content */}
+
       <ScrollView
         contentContainerStyle={{ paddingBottom: 100 }}
         showsVerticalScrollIndicator={false}
       >
-        {/* Header */}
         <View style={styles.header}>
           <TouchableOpacity onPress={() => router.back()}>
             <Ionicons name="arrow-back" size={24} />
@@ -100,7 +99,6 @@ export default function Checkout() {
           <Text style={styles.headerTitle}>Checkout</Text>
         </View>
 
-        {/* Address Section */}
         <Text style={styles.sectionTitle}>Deliver to</Text>
         <TouchableOpacity
           style={styles.boxRow}
@@ -112,7 +110,6 @@ export default function Checkout() {
           <Text style={styles.changeText}>Change</Text>
         </TouchableOpacity>
 
-        {/* Order Summary */}
         <Text style={styles.sectionTitle}>Order Summary</Text>
         <View style={styles.box}>
           {cartItems.map((item, index) => (
@@ -144,7 +141,6 @@ export default function Checkout() {
           ))}
         </View>
 
-        {/* Payment Method Section */}
         <Text style={styles.sectionTitle}>Payment Method</Text>
         <TouchableOpacity
           style={styles.boxRow}
@@ -154,7 +150,6 @@ export default function Checkout() {
           <Text style={styles.changeText}>Change</Text>
         </TouchableOpacity>
 
-        {/* Get Discounts Section */}
         <Text style={styles.sectionTitle}>Get Discounts</Text>
         <TouchableOpacity
           style={styles.boxRow}
@@ -164,7 +159,6 @@ export default function Checkout() {
           <Text style={styles.changeText}>Apply</Text>
         </TouchableOpacity>
 
-        {/* Total Breakdown */}
         <View style={styles.box}>
           <View style={styles.totalRow}>
             <Text>Subtotal</Text>
@@ -183,7 +177,6 @@ export default function Checkout() {
         </View>
       </ScrollView>
 
-      {/* Fixed Button at Bottom */}
       <View style={styles.footer}>
         <TouchableOpacity
           style={styles.placeOrderButton}
