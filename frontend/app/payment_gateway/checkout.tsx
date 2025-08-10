@@ -261,7 +261,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     alignItems: "center",
     marginBottom: 35,
-    marginTop: 3
+    marginTop: 2
   },
   placeOrderText: { color: "white", fontWeight: "bold", fontSize: 16 },
 });
