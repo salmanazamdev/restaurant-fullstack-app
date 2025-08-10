@@ -9,7 +9,7 @@ VALUES
 INSERT INTO user_addresses (user_id, address)
 VALUES
 (1, 'Street 1, Karachi'),
-(2, 'Block A, Islamabad'),
+(2, 'Block A, Islamabad');
 
 
 -- Seed Categories
@@ -336,10 +336,10 @@ INSERT INTO restaurant_customers (restaurant_id, name, email, phone) VALUES
 (3, 'John Doe', 'john.doe@example.com', '0302-3456789');
 
 -- Seed orders
-INSERT INTO orders (user_id, restaurent_id, address_id, total_amount, delivery_fee, payment_method, status)
+INSERT INTO orders (user_id, restaurant_id, address_id, total_amount, delivery_fee, payment_method, status)
 VALUES
 (1, 1, 1, 2500.00, 150.00, 'Cash on Delivery', 'Pending'),
 (2, 3, 2, 1800.00, 150.00, 'Credit Card', 'Confirmed'),
-(2, 2, 3, 950.00, 150.00, 'Easypaisa', 'Completed'),
+(2, 2, 2, 950.00, 150.00, 'Easypaisa', 'Completed'),
 (1, 4, 1, 1100.00, 150.00, 'JazzCash', 'Pending'),
-(2, 5, 4, 2890.00, 150.00, 'Cash on Delivery', 'Shipped');
+(2, 5, 2, 2890.00, 150.00, 'Cash on Delivery', 'Shipped');
