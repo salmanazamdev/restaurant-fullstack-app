@@ -4,7 +4,6 @@ const deleteAllCartItemsByUserId = async (req, res) => {
   try {
     const { userId } = req.params;
 
-    // Delete from the correct table using PostgreSQL placeholder syntax
     await pool.query('DELETE FROM cart_items WHERE user_id = $1', [userId]);
 
     res.status(200).json({ message: "All cart items deleted successfully" });
