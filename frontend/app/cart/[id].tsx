@@ -25,7 +25,7 @@ export default function CartScreen() {
   const clearCart = async () => {
     Alert.alert(
       "Clear Cart",
-      "Are you sure you want to remove all items from your cart?",
+      "Are you sure you want to remove all items from your cart, buddy?,
       [
         { text: "Cancel", style: "cancel" },
         {
