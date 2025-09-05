@@ -4,7 +4,7 @@ Khaana Express app is a full-stack food delivery/ordering and restaurant managem
 
 ---
 
-## 🚀 Tech Stack
+##. 🚀 Tech Stack
 
 - **Backend:** Node.js, Express.js
 - **Database:** PostgreSQL (Dockerized)
